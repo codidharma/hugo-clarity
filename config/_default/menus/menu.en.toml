@@ -4,7 +4,7 @@
   weight = -110
 
 [[main]]
-  name = "Individual Posts"
+  name = "Standalone Posts"
   url = "posts"
   weight = -109
 
@@ -22,11 +22,10 @@
   parent = "SeriesPosts"
   name = "C# Language"
   url = "courses/cshp"
-  
 
 [[main]]
-  name = "About"
-  url = "about/"
+  name = "About Me"
+  url = "aboutme/"
   weight = -107
 
 # social menu links
