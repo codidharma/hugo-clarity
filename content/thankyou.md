@@ -1,6 +1,6 @@
 ---
 title: "Thankyou"
-layout: "about"
+layout: "thanks"
 ---
 
 
