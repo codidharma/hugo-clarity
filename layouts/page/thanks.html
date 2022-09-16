@@ -1,0 +1,13 @@
+{{- define "main" }}
+{{- $s := .Site.Params }}
+{{- $p := .Params }}
+
+<div class="wrap content">
+  <div class="row">
+    
+    <div class="post_content">
+      {{- .Content }}
+    </div>
+  </div>
+</div>
+{{- end }}
