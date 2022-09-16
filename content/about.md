@@ -1,25 +1,13 @@
-+++
-title = "About"
-description = "Hugo, the world's fastest framework for building websites"
-date = "2019-02-28"
-aliases = ["about-us", "about-hugo", "contact"]
-author = "Hugo Authors"
-+++
+---
+title: "About"
+Description: "Making the Complex Simple and Easy to Understand!"
+layout: "about"
+---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+I am an integration developer and architect by profession. I have worked as an integration developer, designer architect for better part of 9 years. A recent dash with blazor framework sparked my interest in full stack development.  Over the years I have written many articles on Mircrosoft's technet wiki and have done public presentations around Microsoft Integration tech stack.
 
-Hugo makes use of a variety of open source projects including:
+In my Free time, I generally
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+{{< emoji ":speaker:" >}}Speak about azure, {{< emoji ":musical_keyboard:" >}}Play Piano,{{< emoji ":stew:" >}}Cook
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
-
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
-
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+If you love my work, show some {{< emoji ":heart:" >}} by sharing the blogs and the repositories. Consider providing a star
