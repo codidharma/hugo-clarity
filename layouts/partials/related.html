@@ -1,0 +1,20 @@
+{{ if isset .Params "series" }}
+<div>
+    <h2 class="post_related">Posts in this Series</h2>
+    <ul class="list-group">
+        {{ range $num,$post := (index .Site.Taxonomies.series (index .Params.series 0 | urlize)).Pages.ByDate }}
+            {{ if eq $post.Permalink $.Page.Permalink }}
+                <li class="list-group-item active">
+                    Part {{ add $num 1 }}: This Article
+                </li>
+            {{ else }}
+                <li class="list-group-item">
+                    <a href="{{$post.Permalink}}">
+                        Part {{ add $num 1 }}: {{ $post.Params.title}}
+                    </a>
+                </li>
+            {{end}}
+        {{end}}
+    </ul>
+</div>
+{{end}}
