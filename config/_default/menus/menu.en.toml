@@ -28,6 +28,11 @@
   url = "aboutme/"
   weight = -107
 
+[[main]]
+  name = "Contact Me"
+  url = "contact/"
+  weight = -106
+
 # social menu links
 
 [[social]]
