@@ -9,19 +9,19 @@
   weight = -109
 
 #Nested Submenus
-[[main]]
-  name = "Series Posts"
-  identifier = "SeriesPosts"
-  weight = -108
-[[main]]
-  parent = "SeriesPosts"
-  name = "C Language"
-  url = "courses/c"
+#[[main]]
+ # name = "Series Posts"
+ # identifier = "SeriesPosts"
+ # weight = -108
+#[[main]]
+#  parent = "SeriesPosts"
+#  name = "C Language"
+#  url = "courses/c"
 
-[[main]]
-  parent = "SeriesPosts"
-  name = "C# Language"
-  url = "courses/cshp"
+#[[main]]
+ # parent = "SeriesPosts"
+ # name = "C# Language"
+ # url = "courses/cshp"
 
 
   [[main]]
