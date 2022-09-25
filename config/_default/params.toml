@@ -163,3 +163,6 @@ lang = "en"
 
 [about]
 bannerLocation = "images/about/banner.jpg"
+
+[talks]
+bannerLocation = "images/talks/banner.jpg"
