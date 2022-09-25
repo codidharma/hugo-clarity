@@ -5,10 +5,10 @@ draft: false
 featured: true
 toc: false
 tags:
-  - Logic_Apps
-  - Github_Actions
+  - LogicApps
+  - Github-Actions
 series:
-  - Github_Actions
+  - Github-Actions
 featureImage: feature.jpg
 ---
 ![]()
