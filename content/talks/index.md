@@ -15,8 +15,17 @@ Taking a sabbatical from speaking due to family commitments. If you would like m
 
 # Current Talks
 
+* [Deploying .NET Core Web API to Azure App using GitHub Actions](#webapiwithgithubactions)
+* [Automating Logic Apps deployment with GitHub Actions](#lawithgithubactions)
+* [Modern Day Intelligent Workflows with Azure Logic Apps and Cognitive Services](#modernintegrations)
+* [How to build Event Driven .Net Apps using Servless Azure Functions](#eventdrivenazfuncs)
+* [Things you should know about Azure API Management](#azapim)
+* [Azure Integration Services for .NET Developers](#azintegrationservices)
+* [Logic Apps for Beginners](#intelligentchatbots)
+
 # Retired Talks
 
+* [How to build a Serverless Helmet detection system using Custom Vision, Azure Functions, Event Grid and Logic Apps](#helmetdetection)
 * [Building Intelligent Chat Bots using MS Bot Framework](#intelligentchatbots)
 * [Administering BizTalk Server with a ChatBot](#administeringbiztalk)
 ---
@@ -25,21 +34,49 @@ Taking a sabbatical from speaking due to family commitments. If you would like m
 
 ## 2021
 
+**Dear Azure Weekly Presentations<span> - Online (March 20th)</span>**
+* [Deploying .NET Core Web API to Azure App using GitHub Actions](#webapiwithgithubactions)
+  {{< youtube SPMqBSXBcp8 >}}
+
+**Global Integration Bootcamp<span> - Online (February 27th)</span>**
+* [Automating Logic Apps deployment with GitHub Actions](#lawithgithubactions)
+
 ## 2020
+
+**Global AI Tour 2020 <span> - Online (May 17th)</span>**
+* [Modern Day Intelligent Workflows with Azure Logic Apps and Cognitive Services](#modernintegrations)
+  {{< youtube rNdCP2VuV0w >}}
+
+**Dear Azure Weekly Presentations<span> - Online (May 17th)</span>**
+* [How to build Event Driven .Net Apps using Servless Azure Functions](#eventdrivenazfuncs)
+  {{< youtube 8NuVQM89AQc >}}
+
+**Global Azure Virtual<span> - Online (April 23rd)</span>**
+* [Things you should know about Azure API Management](#azapim)
+  {{< youtube Bn5ec3X_zR4 >}}
+
+**Dear Azure Weekly Presentations<span> - Online (April 16th)</span>**
+* [Azure Integration Services for .NET Developers](#azintegrationservices)
+  {{< youtube PrBpzQ9Pcm8 >}}
 
 ## 2019
 
-**[Integration User Group](https://www.integrationusergroup.com/) <span> - Online (October 7th)**
+**[Integration User Group](https://www.integrationusergroup.com/) <span> - Online (October 7th)</span>**
 * [How to build a Serverless Helmet detection system using Custom Vision, Azure Functions, Event Grid and Logic Apps](#helmetdetection)
   
   [Recording link](https://www.integrationusergroup.com/how-to-build-a-serverless-helmet-detection-systems)
 
 **Integration Down Under<span> - Adelaide, South Australia (August 11th)</span>**
 * [How to build a Serverless Helmet detection system using Custom Vision, Azure Functions, Event Grid and Logic Apps](#helmetdetection)
-{{< youtube GsFtj4RLn_k >}}
+  {{< youtube GsFtj4RLn_k >}}
+
+**Dear Azure Weekly Presentations<span> - Online (August 11th)</span>**
+* [How to build a Serverless Helmet detection system using Custom Vision, Azure Functions, Event Grid and Logic Apps](#helmetdetection)
+  {{< youtube 7a0n07yAQdM >}}
 
 **Global Azure Bootcamp <span> - Adelaide,South Australia (April 27th)</span>**
 * [Building Intelligent Chat Bots using MS Bot Framework](#intelligentchatbots)
+* [Logic Apps for Beginners](#intelligentchatbots)
 
 **Adelaide Azure User Group <span> - Adelaide,South Australia (April 18th)</span>**
 * [Administering BizTalk Server with a ChatBot](#administeringbiztalk)
@@ -56,14 +93,76 @@ Taking a sabbatical from speaking due to family commitments. If you would like m
 ---
 # Talk Details
 
+## <a name="lawithgithubactions"></a>Automating Logic Apps deployment with GitHub Actions
+This is a beginner friendly session where I present how GITHUB actions work and how we can use it to set up a proper Continuous deployment for a logic app and how to deploy it to azure.
+
+[Presentation Slides](https://github.com/codidharma/presentations/blob/main/2021/Automating%20Logic%20Apps%20Deployment%20With%20GitHUB%20Actions.pptx)
+
+[back to top](#top)
+
+## <a name="webapiwithgithubactions"></a>Deploying .NET Core Web API to Azure App using GitHub Actions 
+This is a beginner friendly session where I present how GITHUB actions work and how we can use it to set up a proper Continuous deployment for a web api and how to deploy it to azure.
+
+[Presentation Slides](https://github.com/codidharma/presentations/blob/main/2021/Automating%20.Net%20Core%20Web%20API%20deployment%20with%20GitHub%20Actions.pptx)
+
+[back to top](#top)
+
+## <a name="modernintegrations"></a>Modern Day Intelligent Workflows with Azure Logic Apps and Cognitive Services
+The session demonstrates how easily and effortlessly we can build integration solutions for modern-day using Logic Apps and Azure Cognitive Services.
+
+[back to top](#top)
+
+## <a name="eventdrivenazfuncs"></a>How to build Event Driven .Net Apps using Serverless Azure Functions
+This is a advanced session which dives into the topics of event driven programming and how we can use different azure services like Azure Event Grid, Azure Functions etc, to create a reactive solution.
+
+[Presentation Slides](https://github.com/codidharma/presentations/blob/main/2020/Event%20Driven%20.NET%20apps%20with%20Azure%20Function.pptx)
+
+[back to top](#top)
+
+
+## <a name="azapim"></a>Things you should know about Azure API Management
+The session would demonstrate,
+
+* What are Web APIs and why they are used?
+* What does Serverless mean?
+* What is Azure serverless APIs?
+* What is Azure API Management ?
+* What are Azure APIM policies?
+* Options to expose the APIs securely.
+* Products and subscription scopes for the APIs.
+* Developer portal for the APIs.
+* And Some best practices..
+
+[Presentation Slides](https://github.com/codidharma/presentations/blob/main/2020/Azure%20API%20Management'.pptx)
+
+[back to top](#top)
+
+## <a name="azintegrationservices"></a>Azure Integration Services for .NET Developers
+This session talks about various components that are part of the Azure integration services and why when to use them. It also covers various basic integration design patterns that can be built using these services e.g. queue/topic-based integrations, event-driven integrations, etc
+
+[Presentation Slides](https://github.com/codidharma/presentations/blob/main/2020/Azure%20Integration%20Services.pptx)
+
+[back to top](#top)
+
 ## <a name="helmetdetection"></a>How to build a Serverless Helmet detection system using Custom Vision, Azure Functions, Event Grid and Logic Apps
 This session will talk about how we can create a serverless helmet detection app using Custom Vision (Azure Cognitive Service), Event Grid, Azure Functions and Logic Apps. It will briefly touch up on how we can use event grid to create reactive workflows and functions which cater to different aspects of the Helmet Detection system.
+
+[Presentation Slides](https://github.com/codidharma/presentations/blob/main/2019/How%20to%20build%20a%20Serverless%20Helmet%20detection%20system.pptx)
 
 
 [back to top](#top)
 
 ## <a name="intelligentchatbots"></a>Building Intelligent Chat Bots using MS Bot Framework
-This is a beginner friendly presentation which introduces the participants to the concepts of conversational AI and then explains how one can get started building fun chatbots using MS Botframework and the Azure Cognitive Services.
+This is a beginner friendly presentation which introduces the participants to the concepts of conversational AI and then explains how one can get started building fun chatbots using MS Botframework and the Azure Cognitive Services. 
+
+[Presentation Slides](https://github.com/codidharma/presentations/blob/main/2019/BuildingIntelligentChatBots.pptx)
+
+[back to top](#top)
+
+## <a name="logicappsbeginners"></a>Building Intelligent Chat Bots using MS Bot Framework
+This is a beginner friendly presentation which introduces the participants to the azure logic apps and it then talks about some sample integrations and how easy it is build them. 
+
+[Presentation Slides](https://github.com/codidharma/presentations/blob/main/2019/LogicAppsForBeginners.pptx)
 
 [back to top](#top)
 
