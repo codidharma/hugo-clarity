@@ -4,13 +4,15 @@ backend:
 
 publish_mode: editorial_workflow
 
-media_folder: "static/images"
-public_folder: "/images"
+media_folder: ""
+public_folder: ""
 
 collections:
   - name: "posts"
     label: "posts"
     folder: "content/posts"
+    media_folder: "static/images/{{slug}}"
+    public_folder: "images/{{slug}}"
     create: true
     fields:
     - {label: "Title", name: "title", widget: "string"}
