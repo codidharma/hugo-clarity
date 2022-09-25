@@ -33,3 +33,61 @@ Once done the project structure looks like following.
 ## S﻿wagger UI JavaScripts
 
 Now we need the javascripts to render the \`OpenAPI\` / \`Swagger\` documentation. Fortunately, we do not need to write these scripts ourselves, these scripts are released on GITHUB for us to use. We can get them from [swagger-api/swagger-ui](https://github.com/swagger-api/swagger-ui) repository. All we need to do is download the latest release from [Swagger UI Latest release](https://github.com/swagger-api/swagger-ui/releases/tag/v3.43.0)
+
+O﻿nce this is done, we need to extract out the release and we need to get following three things from the `dist` folder.
+
+1. s﻿wagger-ui-bundle.js
+2. s﻿wagger-ui-standalone-preset.js
+3. s﻿wagger-ui.css
+
+W﻿e can put the javascript files in a seperate folder for javascript in wwwroot folder
+
+![](images/building-open-api-document-hub-with-blazor-webassembly/javascriptsadded.png "Javascripts Added")
+
+N﻿ext step is to refer these scripts in the `index.html` page of the blazor application. It can be easily done as follows.
+
+```html
+<script src="javascripts/swagger-ui-bundle.js"></script>
+<script src="javascripts/swagger-ui-standalone-preset.js"></script>
+```
+
+Before we configure the function to render the swagger ui, we need to add few API documentations links in our project (As we will see later, we can directly refer to the documentation using their urls).
+
+I﻿ have taken two documents for this demo. I have added
+
+1. P﻿etstorev3.json file which is the `OpenAPI` version
+2. P﻿ertstorev2.json file which is the `Swagger` version
+
+N﻿ext we add the javascript to load the swagger UI in our `index.html` page. We can also create a new javascript file for this and then refer it in the `index.html`. The javascript looks like following
+
+```html
+<script>
+        window.buildSwaggerUI = function (domId) {
+            // Begin Swagger UI call region
+            const ui = SwaggerUIBundle({
+                urls: [
+                    {
+                        url: "apidefinitions/PetStorev2.json",
+                        name: "PetStore V2"
+                    },
+                    {
+                        url: "apidefinitions/PetStorev3.json",
+                        name: "PetStore V3"
+                    }
+                ],
+                dom_id: domId,
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout"
+            })
+            
+            window.ui = ui
+        }
+    </script>
+```
