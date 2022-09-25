@@ -91,3 +91,37 @@ N﻿ext we add the javascript to load the swagger UI in our `index.html` page. W
         }
     </script>
 ```
+
+N﻿ext lets add the pane to render the swagger UI. This can be done by adding a new page called `APIDocs.razor` to the pages folder. Now we want to render the swagger UI once the div component is rendered on the page. We do this by overriding the method as shown below.
+
+```razor
+@page "/apidocs"
+@inject IJSRuntime JSR
+
+<div id="swagger-ui"></div>
+@code
+{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSR.InvokeVoidAsync("buildSwaggerUI");
+    }}
+```
+
+N﻿ext we update the \`navMenu.razor\` to add the link to the \`A\`PIDOcs.razor page that we created. It looks as below.
+
+![](images/building-open-api-document-hub-with-blazor-webassembly/navmenu.png "APIDoc page added to NavMenu")
+
+N﻿ow we run the Blazor application. It is rendered as follows.
+
+![](images/building-open-api-document-hub-with-blazor-webassembly/output1.gif "API Docs are visible")
+
+T﻿here is one glaring problem with this, there is no styling applied!
+
+W﻿e will now apply the css that we retrieved from the release. All we need to do is add the content of the \`swagger-ui-css\` file to the \`app.css\` file located under \`wwwroot/css\` folder. The result after adding the css is as below.
+
+![](images/building-open-api-document-hub-with-blazor-webassembly/beautifiedoutput.gif "Styling applied")
+
+{{< emoji ":metal:" >}} Yeah it Works!!
+
+## Wrapup
+We saw how easy it is to integrate the SwaggerUI in a blazor application. The only problem I see in this approach is that we have to manually copy the javascripts from the `SwaggerUI` repository to make them work for us. There are other configurations like setting up CORS etc that I have not touched upon but you are free to explore them. The documentation if available on the repository that I pointed to earlier on.
