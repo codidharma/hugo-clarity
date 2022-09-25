@@ -26,5 +26,7 @@ collections:
     - {label: "Categories", name: "categories", min: 0,widget: "list"}
     - {label: "Tags", name: "tags", widget: "list", min: 1}
     - {label: "Series", name: "series", widget: "list", min: 0}
+    - {label: "Featured Image", name: "featureImage", widget: "image"}
+    
     
     
