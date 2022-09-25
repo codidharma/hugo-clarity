@@ -8,7 +8,7 @@
   url = "posts"
   weight = -109
 
-# Submenus are done this way: parent -> identifier
+#Nested Submenus
 [[main]]
   name = "Series Posts"
   identifier = "SeriesPosts"
@@ -23,15 +23,25 @@
   name = "C# Language"
   url = "courses/cshp"
 
-[[main]]
+
+  [[main]]
+  name = "Talks"
+  url = "talks/"
+  weight = -107
+
+  [[main]]
   name = "About Me"
   url = "aboutme/"
-  weight = -107
+  weight = -106
 
 [[main]]
   name = "Contact Me"
   url = "contact/"
-  weight = -106
+  weight = -105
+
+
+# Submenus are done this way: parent -> identifier
+
 
 # social menu links
 
