@@ -9,10 +9,12 @@ public_folder: ""
 
 collections:
   - name: "posts"
-    label: "posts"
+    label: "Posts"
+    label_singular: "Post"
     folder: "content/posts"
-    media_folder: "static/images/{{slug}}"
-    public_folder: "images/{{slug}}"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
     create: true
     fields:
     - {label: "Title", name: "title", widget: "string"}
@@ -21,7 +23,8 @@ collections:
     - {label: "Pin To Featured", name: "featured", widget: "boolean"}
     - {label: "Enable TOC", name: "toc", widget: "boolean"}
     - {label: "Body", name: "body", widget: "markdown"}
-    - {label: "Categories", name: "categories", widget: "list"}
-    - {label: "Tags", name: "tags", widget: "list"}
+    - {label: "Categories", name: "categories", min: 0,widget: "list"}
+    - {label: "Tags", name: "tags", widget: "list", min: 1}
+    - {label: "Series", name: "series", widget: "list", min: 0}
     
     
