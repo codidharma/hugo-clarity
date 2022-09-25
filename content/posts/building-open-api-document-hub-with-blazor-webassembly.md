@@ -4,8 +4,8 @@ date: 2022-09-25T17:43:01.646Z
 draft: false
 featured: true
 toc: true
-categories: '"Coding"'
-tags: List ["Blazor, Open API"]
+categories: "Coding"
+tags: ["Blazor, Open API"]
 ---
 In last few years I have worked on/ seen few projects where there were multiple REST APIS in the enterprise and there was  `Open API` (previously `Swagger`) documentation for each one of them. Creating documentation for your REST APIs is undoubtedly a best practice and every developer worth their salt should adopt this. In cases of microservices architecture, there are always multiple APIS that need to be called from the frontend for the product to deliver the value it should. In such cases having robust documentation always helps. But this creates another problem, as the number of services grow, it becomes a cumbersome task to go to the documentation of each of the service and read it. In such case having a swagger document hub where there is a collection of multiple API definition can definitely add value.
 
