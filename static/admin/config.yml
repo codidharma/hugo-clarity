@@ -4,18 +4,21 @@ backend:
 
 publish_mode: editorial_workflow
 
-media_folder: "static/images/{{slug}}"
-public_folder: "images/{{slug}}"
+media_folder: "static/images"
+public_folder: "/images"
 
 collections:
-
-name: "posts"
-      label: "posts"
-      folder: "content/posts"
-      create: true
-      slug: "{{year}}--{{slug}}"
-      fields:
-        - {label: "Title", name: "title", string}
-        - {label: "Publish Date", name: "date", widget: "datetime"}
-        - { label: "Body", name: "body", widget: "markdown"}
-        - {label: "Tags", name: "tags", widget: "string"}
+  - name: "posts"
+    label: "posts"
+    folder: "content/posts"
+    create: true
+    fields:
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Publish Date", name: "date", widget: "date"}
+    - {label: "Is Draft", name: "draft", widget: "boolean"}
+    - {label: "Pin To Featured", name: "featured", widget: "boolean"}
+    - {label: "Enable TOC", name: "toc", widget: "boolean"}
+    - {label: "Body", name: "body", widget: "markdown"}
+    - {label: "Categories", name: "categories", widget: "string"}
+    - {label: "Tags", name: "tags", widget: "string"}
+    
