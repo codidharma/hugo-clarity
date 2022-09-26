@@ -27,6 +27,27 @@ collections:
     - {label: "Tags", name: "tags", widget: "list", min: 1}
     - {label: "Series", name: "series", widget: "list", min: 0}
     - {label: "Featured Image", name: "featureImage", widget: "image"}
-    
+  
+  - name: "hugoseries"
+    label: "Hugo Series Posts"
+    label_singular: "Hugo Series Post"
+    folder: "content/hugoseries"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "date"}
+      - {label: "Is Draft", name: "draft", widget: "boolean"}
+      - {label: "Pin To Featured", name: "featured", widget: "boolean"}
+      - {label: "Enable TOC", name: "toc", widget: "boolean"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Categories", name: "categories", min: 0,widget: "list"}
+      - {label: "Tags", name: "tags", widget: "list", min: 1}
+      - {label: "Series", name: "series", widget: "list", min: 0}
+      - {label: "Featured Image", name: "featureImage", widget: "image"}
+
+
     
     
