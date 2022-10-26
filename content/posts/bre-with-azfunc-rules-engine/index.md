@@ -95,7 +95,8 @@ A rules configuration file can contain multiple workflows,but I like to only put
 
 As shown in the workflow above, I have created a custom action named `ExecutionResultCustomAction` which is configured to run when the condition of a rule is evaluated to true. The custom action is implemented as following([Read More](https://microsoft.github.io/RulesEngine/#custom-actions))
 
-```C#
+![Custom Rules Output Action](CustomREAction.png)
+<!-- ```C#
 public class ExecutionResultCustomAction : ActionBase
     {
         public ExecutionResultCustomAction()
@@ -111,7 +112,7 @@ public class ExecutionResultCustomAction : ActionBase
         }
     }
 
-```
+``` -->
 The custom action reads the value defined in `ExecutionResultCustomActionInput` and parses it into an instance of `ExecutionResult` class
 
 
@@ -121,7 +122,8 @@ I have written a `IRulesEngineHandler` and its implementation `RulesEngineHandle
 
 The rules engine can be invoked using the implementation of `IRulesEngine`. It can be injected into the handler class using Dependency Injection as shwon below.
 
-```C#
+![Rules Engine Handler Dependency Injection](REHandlerDI.png)
+<!-- ```C#
 public RulesEngineHandler(IRulesEngine rulesEngine, IMapper mapper)
         {
             _rulesEngine = rulesEngine ??
@@ -130,9 +132,11 @@ public RulesEngineHandler(IRulesEngine rulesEngine, IMapper mapper)
             _mapper = mapper ??
                 throw new ArgumentNullException(nameof(mapper));
         }
-```
+``` -->
 The rules engine is invoked using the `ExecuteRulesAsync` method of  `RulesEngineHandler`
 
+![Execute Rules Async](ExecuteRulesAsync.png)
+<!-- 
 ```C#
         public async Task<EvaluationOutput> ExecuteRulesAsync(string rulesConfigFile, EvaluationInput[] evaluationInputs)
         {
@@ -156,7 +160,7 @@ The rules engine is invoked using the `ExecuteRulesAsync` method of  `RulesEngin
             return result.ToDto();
 
         }
-```
+``` -->
 The method
 * Accepts the rules configuration json as string and an array of evaluation inputs on which the rules will be executed
 * Runs certain sanity checks and throws execptions if they are not met
@@ -166,8 +170,8 @@ The method
 * And finally transforms the rules execution result to the `EvaluationOutput` and returns the response
 
 The `result.ToDto()` uses an extension method defined specifically on the rules engine execution output. The implemented method is as follows
-
-```C#
+![ToDto Extension Method](ToDto.png)
+<!-- ```C#
 public static EvaluationOutput ToDto(this List<RuleResultTree> ruleResultTrees)
         {
             bool isSuccess = false;
@@ -198,7 +202,7 @@ public static EvaluationOutput ToDto(this List<RuleResultTree> ruleResultTrees)
                 ExecutionResults = executionResults
             };
         }
-```
+``` -->
 
 
 ### Rules Store Repository
@@ -206,18 +210,21 @@ public static EvaluationOutput ToDto(this List<RuleResultTree> ruleResultTrees)
 I have selected the Azure Blob Storage to use as a rules store. The `BlobRulesStoreRepository` implements the mechanism to download the rules configuration.
 
 The Blob Storage SDK allows us to connect to the blob storage through a `BlobContainerClient`, which can be configured at the runtime and then injected as shown below.
+![Blob RUles Store Repository Dependency Injection](BlobRepoDI.png)
 
-```C#
+<!-- ```C#
 public BlobRulesStoreRepository(BlobContainerClient blobContainerClient)
         {
             _blobContainerClient = blobContainerClient
                 ?? throw new ArgumentNullException(nameof(blobContainerClient));
 
         }
-```
+``` -->
 The `GetConfigAsStringAsync` methods shows how to connect to a blob container and retrieve the blob
 
-```C#
+![Get Rules Config As String](GetConfigAsString.png)
+
+<!-- ```C#
 public async Task<string> GetConfigAsStringAsync(string configFileName)
         {
             var blobClient = _blobContainerClient.GetBlobClient(configFileName);
@@ -233,7 +240,7 @@ public async Task<string> GetConfigAsStringAsync(string configFileName)
                 return null;
             }
         }
-```
+``` -->
 
 ### Azure Functions
 
@@ -243,7 +250,9 @@ The azure function serves as a stateless orchestrator for the rules configuratio
 
 The azure function uses the dependency injection to inject the dependencies at the startup, all the dependencies required by the function are as shown below
 
-```C#
+![Azure Function Dependency Injection](AZFuncDI.png)
+
+<!-- ```C#
  public ExecuteRules(IRulesStoreRepository rulesStoreRepository,
             IRulesEngineHandler rulesEngineHandler,
             EvaluationInputWrapperValidator evalInputWrapperValidator)
@@ -258,13 +267,13 @@ The azure function uses the dependency injection to inject the dependencies at t
 
         }
         
-```
+``` -->
 
 #### Request Model
 The Azure function parses the incoming request into `EvaluationInputWrapper` class type
+![Request Models](RequestModel.png)
 
-
-```C#
+<!-- ```C#
 public class EvaluationInput
     {
 
@@ -284,21 +293,25 @@ public class EvaluationInput
         [JsonProperty(PropertyName = "evaluationInputs")]
         public List<EvaluationInput> EvaluationInputs { get; set; }
     }
-```
+``` -->
 using following logic 
 
-```C#
+![Read Http Request Body](ReadReqBody.png)
+
+<!-- ```C#
  string requestBody = await new StreamReader(request.Body).ReadToEndAsync()
                 .ConfigureAwait(false);
 
             var evluationInputWrapper = JsonConvert.DeserializeObject<EvaluationInputWrapper>(requestBody);
 
-```
+``` -->
 #### Model Validation
 
 The instance of `EvaluationInputWrapper` is validated using a Fluent Validation Based Validator defined as below
 
-```C#
+![Request Model Validator](ModelValidator.png)
+
+<!-- ```C#
  public class EvaluationInputValidator : AbstractValidator<EvaluationInput>
     {
         public EvaluationInputValidator()
@@ -322,20 +335,23 @@ The instance of `EvaluationInputWrapper` is validated using a Fluent Validation 
                 .SetValidator(new EvaluationInputValidator());
         }
     }
-```
+``` -->
 The function calls this validator as 
 
-```C#
+![Request Model Validator Call](ValidatorExecution.png)
+
+<!-- ```C#
  var modelValidationResult = await _evalInputWrapperValidator
                 .ValidateAsync(evluationInputWrapper)
                 .ConfigureAwait(false);
-```
+``` -->
 
 #### Dependencies Registration
 
 As shown above, the code uses the concept of dependency injection wherever possible. In order to register dependencies in Azure functions, we use the `Startup` class. Following code snippet shows how we can register various dependencies.
 
-```C#
+![Dependency Registration](DIRegistration.png)
+<!-- ```C#
 public class Startup : FunctionsStartup
     {
         public override void Configure(IFunctionsHostBuilder builder)
@@ -352,11 +368,13 @@ public class Startup : FunctionsStartup
         }
     }
 
-```
+``` -->
 
 The `AddBlobRulesStore` and `AddRulesEngine` are the implemented as extension methods on `IServiceCollection` as shown below.
 
-```C#
+![AddBlobRulesStore Extension Method](AddBlobRulesStore.png) 
+![AddRulesEngine Extension Method](AddRulesEngine.png)
+<!-- ```C#
 public static IServiceCollection AddBlobRulesStore(this IServiceCollection services)
         {
             services.AddOptions<BlobRulesStoreConfiguration>()
@@ -381,8 +399,8 @@ public static IServiceCollection AddBlobRulesStore(this IServiceCollection servi
             services.AddScoped<IRulesStoreRepository, BlobRulesStoreRepository>();
             return services;
         }
-```
-```C#
+``` -->
+<!-- ```C#
 public static IServiceCollection AddRulesEngine(this IServiceCollection services)
         {
             var rulesEngineSettings = new ReSettings
@@ -398,13 +416,14 @@ public static IServiceCollection AddRulesEngine(this IServiceCollection services
 
             return services;
         }
-```
+``` -->
 
 #### Open API Documentation
 
 The AzureFunctions 4.0 supports open api documentation through the use of the [`Microsoft.Azure.WebJobs.Extensions.OpenApi`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.OpenApi) nuget package. The Open API specs are enabled on an Azure function using the decorators on the function signature. The Decorators in this case are shown below.
 
-```C#
+![Open API Decorators](OpenAPIDecorators.png)
+<!-- ```C#
 [FunctionName($"{nameof(ExecuteRules)}Async")]
         [OpenApiSecurity(schemeName: "functions_key", schemeType: SecuritySchemeType.ApiKey, In = OpenApiSecurityLocationType.Header,
             Name = "x-functions-key")]
@@ -426,7 +445,7 @@ The AzureFunctions 4.0 supports open api documentation through the use of the [`
         public async Task<IActionResult> RunAsync(
             [HttpTrigger(authLevel: AuthorizationLevel.Function, methods: "POST")] HttpRequest request,
             ILogger logger)
-```
+``` -->
 The resultant Open API spec looks like follows.
 
 ![Open API Specification for Azure Function](OpenAPISpec.jpg)
