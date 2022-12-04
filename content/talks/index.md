@@ -14,7 +14,7 @@ Taking a sabbatical from speaking due to family commitments. If you would like m
 ---
 
 # Current Talks
-
+* [To Logic Apps or Power Automate: That is the Question?](#laorpa)
 * [Deploying .NET Core Web API to Azure App using GitHub Actions](#webapiwithgithubactions)
 * [Automating Logic Apps deployment with GitHub Actions](#lawithgithubactions)
 * [Modern Day Intelligent Workflows with Azure Logic Apps and Cognitive Services](#modernintegrations)
@@ -31,6 +31,13 @@ Taking a sabbatical from speaking due to family commitments. If you would like m
 ---
 
 # Past Presentations
+
+## 2022
+
+**Dear Azure Weekly Presentations<span> - Online (November 6th)</span>**
+* [To Logic Apps or Power Automate: That is the Question?](#laorpa)
+  {{< youtube L1s-ouSTim8 >}}
+
 
 ## 2021
 
@@ -92,6 +99,13 @@ Taking a sabbatical from speaking due to family commitments. If you would like m
 
 ---
 # Talk Details
+
+## <a name="laorpa"></a>To Logic Apps or Power Automate: That is the Question?
+This is an intermediate level session where I present based on my past experience, the process I use to determine if I should use Logic Apps or Power Automate for a workflow in my project.
+
+[Presentation Slides](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2Fcodidharma%2Fpresentations%2Fmain%2F2022%2FLogicAppsVPowerAutomate.pptx&wdOrigin=BROWSELINK)
+
+[back to top](#top)
 
 ## <a name="lawithgithubactions"></a>Automating Logic Apps deployment with GitHub Actions
 This is a beginner friendly session where I present how GITHUB actions work and how we can use it to set up a proper Continuous deployment for a logic app and how to deploy it to azure.
