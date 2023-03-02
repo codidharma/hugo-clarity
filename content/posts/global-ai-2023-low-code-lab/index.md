@@ -181,6 +181,9 @@ We will need Computer Vision API to use the OCR to extract the registration numb
 5. Once the deployment is done, Click on Go to resource
 ![Deployment Done](storageaccount/Create4.JPG)
 
+6. On the left hand side, click on the Access Keys and copy the blob storage name and key(you will have to click on show and then copy the key)
+![Copy Blob Access Details](storageaccount/accessKeys.JPG)
+
 #### Adding Container
 
 1. On left hand side blade, select containers.
@@ -194,5 +197,191 @@ We will need Computer Vision API to use the OCR to extract the registration numb
 
 
 With this we are set to start building the workflow.
+
+### Creating Logic Apps Workflow
+
+We will use Logic Apps service to create an orchestration workflow which will read the contents of the uploaded blob and detect number and send an email notification for the infraction. Follow the steps given below
+
+1. Click on the hamburger icon and click on create a resource
+
+![Select Create a Resource](computervision/create1.JPG)
+
+2. Select Integration and Find Logic Apps and click on Create
+![Select Logic Apps](la/Create2.JPG)
+
+3. Fill out the form as shown below and click on Review + Create
+![Form](la/Create3.JPG)
+
+4. Once the validation passes, click on Create to start the deployment
+![Create instance](la/Create4.JPG)
+
+5. Once Deployment is done, click on Go to resource
+![Deployment Done](la/Create5.JPG)
+
+
+### Progamming the Logic Apps
+
+We will now add the logic to the created logic apps. Follow the steps given below
+
+1. Once you go to the logic apps, the logic apps designer will be presented to you. Here you can select different templates that are available out of the box. We will select the `Blank logic app` template
+
+![Select Blank logic app template](la/selectLaTemplate.JPG)
+
+2. Now we will add the trigger to the logic app. As the name suggest, the trigger is what starts the logic app. In our case, our trigger is `When a blob is created` event. When this event occurs for the blob uploaded to the `uploads` container we created earlier, we want to start the processing. In Search box, search for `Event Grid`. Select the `When a resource event occurs`
+![Selecting Trigger](la/selecttrigger.JPG)
+
+3. You will now be asked to sign in. Use Defauly directory and click on sign in. Complete the sign in.
+![Sign In](la/signineg.JPG)
+
+4. Now we will configure the Logic app to react to the blob created event when the blob is uploaded to the `uploads` container. Configure the Event Grid Trigger as shown below.
+
+![Configure Trigger](la/configureegtrigger.JPG)
+
+5. Click on Save to save the logic app.
+
+6. Now we will add the logic to get the url of the uploaded blob from which we will get information about the container and the name of the uploaded blob. If we observe, the general schema for a blob created event as raised by Azure is of following form
+
+```JSON
+{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/test-container/blobs/new-file.txt",
+  "eventType": "Microsoft.Storage.BlobCreated",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "PutBlockList",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "eTag": "\"0x8D4BCC2E4835CD0\"",
+    "contentType": "text/plain",
+    "contentLength": 524288,
+    "blobType": "BlockBlob",
+    "url": "https://my-storage-account.blob.core.windows.net/testcontainer/new-file.txt",
+    "sequencer": "00000000000004420000000000028963",
+    "storageDiagnostics": {
+      "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
+}
+```
+
+7. In the search bar search for variables and select `Initialize variable` action
+
+![Initialize Variable to Store Blob Path](la/searchvariables.JPG)
+
+![Initiaize Variable to Store Blob Path 2](la/selectvariable.JPG)
+
+8. We will now read the url from the blob created event sampled above and then use logic apps functions to get the value of the path. We will read the `url` property in the data object in the trigger body using following formula
+```
+triggerBody()?['data']?['url']
+```
+This will give us the url of the uploaded blob. From this we want to extractout `/testcontainer/new-file.txt`. So we use another function called `uriPath`. SO our final function will look like below.
+
+```
+uriPath(triggerBody()?['data']?['url'])
+```
+this will give us the required path of the blob.
+
+Click in the Value box on the variable form. A window will pop up on the right hand side, select `expression` there and enter above formula there and click on ok. Save the logic app.
+
+![Read Blob Path Formula](la/readblobPath.JPG)
+
+9. We will now read the content of the blob using the Blob Storage related action. In the search box, search for `Azure Blob Storage` and select `Get Blob Content using Path(V2)`
+![Search for Azure Blob Storage](la/selectblobactions.JPG)
+
+10. We will now need to use the blob storage details that we captured earlier to configure the connection to the blob storage. Once you select action in previous Step, you will be presented following screen. Fill out with the necessary details as shown below. Click on Create to create the connection
+
+![Create Blob Connection](la/createblobconn.JPG)
+
+11. Configure the action as shown below and save the logic app.
+![Configure Get Blob Content](la/configureBlobPathAction.JPG)
+
+12. We will now pass the content of the uploaded blob to the OCR function of the Computer Vision API. In the seach box, search for 'Computer Vision' and select `Optical Character Recognition(OCR) to Text` action.
+
+![Search and Select Computer Vision](la/selectcv.JPG)
+![Select OCR to Text action](la/selectocrtotext.JPG)
+
+13. Once you select the action, you will be asked to create a connection for the Computer Vision API. Here you will need the access details saved earlier while creating the Computer Vision API instance. Fill out the form as shown below and click on Create
+
+![Configure Computer Vision API connection](la/configurecvconn.JPG)
+
+14. Configure the action as shown below and save the logic app.
+![Configure OCR to Text Action Properties](la/configureoctToTextProps.JPG)
+
+15. The OCR if it detects words in the image will give a response like shown in sample below.
+```JSON
+{
+  "text": "MHXXBD8877"
+}
+```
+while a failure to detect will produce following message
+
+```JSON
+{
+  "text": ""
+}
+```
+16. Lets code out the failure path. On this path we will create a new blob in the `manualops` container so that some other system can pick up the image for manual processing and we will delete the original blob in `uploads` container
+
+17. In the search bar, search for `Condition` and select Control. Then select `Condition`
+![Select Control](la/selectcondition.JPG)
+![Select Condition](la/selectcondition1.JPG)
+
+18. We will check if the `text` property in the output of `Optical Character Recognition(OCR) to Text` is empty now. If it is empty, we will follow the path defined in Step 16
+We will use the formula 
+```
+empty(body('Optical_Character_Recognition_(OCR)_to_Text')?['text'])
+
+```
+Configure the condition as shown in below steps and Save the logic app
+
+![Step 1](la/configurecond1.JPG)
+![Step 2](la/configurecond2.JPG)
+
+19. On the true path, click on `Add an action`. In the search box, search for `Azure Blob Storage` and select `Create Blob V2` as shown below
+![Select Create Blob V2](la/selectCreateBlob.JPG)
+
+20. We will no need to extract the name of the blob to copy it to the destination container. We already have the path stored in variable `varBlobPath` earlier. We will now manipulate it to get the name of the blob. If you recall, the blob url is of format 
+```URL
+https://my-storage-account.blob.core.windows.net/<containerName>/new-file.txt
+```
+and the `varBlobPath` variable contains value `/<containerName>/new-file.txt`.
+
+we will use following formula to read the blob name
+```
+substring(variables('varBlobPath'),add(lastIndexOf(variables('varBlobPath'), '/'), 1))
+```
+and 
+```
+triggerBody()?['data']?['url']
+```
+to read the url of the uploaded blob.
+
+Configure the properties of the action as shown below and Save the logic app
+
+![Step 1](la/createBlob1.JPG)
+
+![Step 2](la/createBlob2.JPG)
+
+![Step 3](la/createBlob3.JPG)
+
+Finally it should look like below
+![Create Blob Fully Configured](la/createBlobfinal.JPG)
+
+21. Now we will delete the original blob in the uploads container.  Click on Add an Action. In the Search bar,search for `Azure Blob Storage` and select `Delete Blob V2` as shown below
+![Select Delete Blob V2](la/selectdeleteblob.JPG)
+
+22. Configure the action by filling the form as shown below and save the logic app
+
+![Configure Delete Blob V2](la/configuredeleteBlob.JPG)
+
+23. We will now code the postive path where the text is detected in image. We will do so on the false part of the condition.
+
+24. On the False Part, Click on `Add an action`
+
+
+
 
 
