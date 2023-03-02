@@ -163,5 +163,36 @@ We will need Computer Vision API to use the OCR to extract the registration numb
 ![Copy Key and Endpoint Details](computervision/Create6.JPG)
 
 
+### Creating The Blob Storage
+
+1. Click on the hamburger icon and click on create a resource
+
+![Select Create a Resource](computervision/create1.JPG)
+
+2. Click on Storage and select Storage Account and click on Create
+![Select Storage Account](storageaccount/Create1.JPG)
+
+3. Fill out the form as shown below. You will need to change the name. Click on Review. No need to change any other properties
+![Fill out Form](storageaccount/Create2.JPG)
+
+4. Click on Create to create the storage account instance
+![Create Storage Account Instance](storageaccount/Create3.JPG)
+
+5. Once the deployment is done, Click on Go to resource
+![Deployment Done](storageaccount/Create4.JPG)
+
+#### Adding Container
+
+1. On left hand side blade, select containers.
+![Select Containers](storageaccount/Create5.JPG)
+
+2. Click on Container to add a new container and fill out the form as shown and click on Create
+![New Container](storageaccount/Create6.JPG)
+
+3. Repeat step 2 to create another container called `manualops`
+![New Container](storageaccount/Create7.JPG)
+
+
+With this we are set to start building the workflow.
 
 
