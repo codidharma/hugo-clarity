@@ -62,11 +62,11 @@ Before following with this Lab, it is necessary to have below things set up
 ### A Computer
 Access to a computer and internet is required to do the development and follow along
 
-### Azure Subscription
+### Getting Azure Subscription
 
 An acive azure subscription is required. A free trial account can be set up using [Azure Trial Account Link](https://azure.microsoft.com/en-in/free/)
 
-### Resource Group
+### Creating Resource Group
 
 You will need a resource group to club all the assets we build during the lab. Create a resource group called `rg-ai-blobal-btcmp-2k23-01`. Following are the steps to create a resource group.
 1. On the left hand side, click on the hamburger menu and select Resource groups
@@ -101,8 +101,67 @@ Before we begin using reactive programming to access uploaded blobs, we need to 
 
 
 
-### Email Account To Send And Receive Email
+### Setting up Email Account To Send And Receive Email
 
 You can use your existing gmail account or create a free gmail account to send the ticket notifications. [Create a Gmail account](https://support.google.com/mail/answer/56256?hl=en)
+
+## Solution Implementation
+
+### Creating Azure Cosmos DB
+
+We will use the Azure Cosmos DB to store the fictional vehicle registration data. We will also use the same database to store the created tickets. The registration data and ticket data will be stored in different containers in the database. We will use the `district` as the partition key to partition the data properly.
+
+1. Click on the hamburger menu icon on the left side and select Azure Cosmos DB.
+![Select Azure Cosmos DB](cosmosdb/menublade.JPG)
+2. Click on Create
+![Initiate Creation Operation](cosmosdb/create1.JPG)
+3. Select Azure Cosmos DB for NoSQL
+![Select NoSQL](cosmosdb/Create2.JPG)
+4. Fill out the basics form (Change the Account Name) and click on Review + Create
+![Fill Basics Form](cosmosdb/create3.JPG)
+5. Click on Create
+![Create Azure Cosmos DB](cosmosdb/create4.JPG)
+6. Once done you will get the notification
+![Creation Completed](cosmosdb/create5.JPG)
+
+### Creating Azure Cosmos DB Collections
+
+#### Registration Container
+1. Navigate to the Cosmos DB and select Data Explorer on Left Hand Side and click on New Container
+  ![Create new Conatiner](cosmosdb/RegistrationContainer1.JPG)
+2. Fill out the form as shown below an click on OK
+  ![Form](cosmosdb/RegistrationContainer3JPG.JPG)
+  ![Form](cosmosdb/RegistrationContainer2.JPG)
+
+#### Tickets Container
+1. Click on New Container
+2. Fill out the form as shown below and click on OK
+![Form](cosmosdb/RegistrationContainer4.JPG)
+
+
+### Creating Computer Vision API Instance
+
+We will need Computer Vision API to use the OCR to extract the registration number. Follow below steps to create a free instance of the computer vision API
+
+1. Click on the hamburger icon and click on create a resource
+
+![Select Create a Resource](computervision/create1.JPG)
+
+2. Click on AI + Machine Learning and the locate computer vision and click on Create
+![Select Computer Vision](computervision/create2.JPG)
+
+3. Fill out the form as shown below. You may want to change the name under instance details. Click on Review + Create
+![Fill out form](computervision/create3.JPG)
+
+4. Once the validation passes, click on Create to create the instance.
+![Create API Instance](computervision/Create4.JPG)
+
+5. You will get a notification once done. Click on the Go to resource. You will be navigated to the instance
+![Deployment Done](computervision/Creative5.JPG)
+
+6. On the resource page, on the left pane, click on the Keys and Endpoints and the copy Key 1 and Endpoint. We will need it later on.
+![Copy Key and Endpoint Details](computervision/Create6.JPG)
+
+
 
 
