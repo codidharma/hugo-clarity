@@ -431,7 +431,7 @@ Configure the action as shown below and save the logic app
 ```JSON
 [
   {
-    "id": "MH15BD8877",
+    "id": "<registration Number>",
     "ownerName": "Mandar Dharmadhikari",
     "district": "Pune",
     "contactEmail": "codidharma@gmail.com",
