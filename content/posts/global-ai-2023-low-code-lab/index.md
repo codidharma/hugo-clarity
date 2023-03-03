@@ -227,7 +227,7 @@ We will use Logic Apps service to create an orchestration workflow which will re
 ![Deployment Done](la/Create5.JPG)
 
 
-### Progamming the Logic Apps
+### Programming the Logic Apps
 
 We will now add the logic to the created logic apps. Follow the steps given below
 
