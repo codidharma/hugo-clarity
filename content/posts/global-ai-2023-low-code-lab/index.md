@@ -103,7 +103,11 @@ Before we begin using reactive programming to access uploaded blobs, we need to 
 
 ### Setting up Email Account To Send And Receive Email
 
-You can use your existing gmail account or create a free gmail account to send the ticket notifications. [Create a Gmail account](https://support.google.com/mail/answer/56256?hl=en)
+You can use send grid to send emails. You can get free Send Grid Account using free plan from [Get started for free with Send Grid](https://sendgrid.com/free/)
+
+Follow the steps provided to verify sender and set up 2FA.
+Post that create a API key from settings and save it as it will be used at a later point in time to send the email.
+
 
 ## Solution Implementation
 
@@ -123,6 +127,10 @@ We will use the Azure Cosmos DB to store the fictional vehicle registration data
 ![Create Azure Cosmos DB](cosmosdb/create4.JPG)
 6. Once done you will get the notification
 ![Creation Completed](cosmosdb/create5.JPG)
+
+7. Navigate to the Cosmos DB and select Keys and make a not of the name of the cosmos DB and primary key. This will be required later.
+
+![Select Key](cosmosdb/KeysCosmosDB.JPG)
 
 ### Creating Azure Cosmos DB Collections
 
@@ -469,32 +477,36 @@ Configure them as shown below.
 Save the logic app once done
 
 
-36. Lets us now code the final logic to send the email notification. In the true path of the condition created in step 28, click on `Add an action`. In the search box, search for `Gmail` and select `Send email V2`
-![Search Gmail](la/selectGmail.JPG)
-![Select Send Email V2](la/selectGmail2.JPG)
+36. Lets us now code the final logic to send the email notification. In the true path of the condition created in step 28, click on `Add an action`. In the search box, search for `Send Grid` and select `Send email V4`
+![Search Send Grid](la/selectSendGrid1.JPG)
+![Select Send Email V2](la/selectSendGrid2.JPG)
 
-37. You will now be presented to configure the Gmail connection by Signining in. Configure the connection as shown below and click on SignIn and follow the sign in process as prompted
+37. You will now be presented to configure the SendGrid connection by providing connection name and send grid key. Configure the connection as shown below and click on Create
 
-![Configure Gmai connection](la/configureGmailConn.JPG)
+![Configure Send Grid connection](la/ConfigureSGConn.JPG)
 
-38. Now we configure the action. By default you will only see option to configure `To` email address only. We will need other parameters like Subject, Body, Attachments etc to send a proper mail. To get these, click on the `Add new parameter` dropdown and select as shown below and then click outside the dropdown to get these parameters
+38. Now we configure the action. By default you will only see option to configure `To` email address only. We will need other parameters like Attachments etc to send a proper mail. To get these, click on the `Add new parameter` dropdown and select as shown below and then click outside the dropdown to get these parameters
 
 ![Select Extra Parameters](la/sendEmailAction1.JPG)
 
 ![Parameters Selected](la/sendEmailAction2.JPG)
 
-39. To get the `To` email address, we have to get the email address from the output of the `Query Documents V5`. Since we know for sure that we will get to sending email when only one registration is found, we will use following formula, to extract the email address
+39. You will need to set up the email id of the sender which you registered as part of the pre requisites.
+
+![Set From Email Address](la/sendEmailAction3.JPG)
+
+To get the `To` email address, we have to get the email address from the output of the `Query Documents V5`. Since we know for sure that we will get to sending email when only one registration is found, we will use following formula, to extract the email address
 
 ```
 string(first(body('Query_documents_V5')?['value'])?['contactEmail'])
 ```
 configure the `To` field as shown below
 
-![Configure To Email Address](la/sendEmailAction3.JPG)
+![Configure To Email Address](la/sendEmailAction4.JPG)
 
 To configure the Subject, follow the step below
 
-![Configure Subject](la/sendEmailAction4.JPG)
+![Configure Subject](la/sendEmailAction5.JPG)
 
 To Set Body of the email, follow below steps
 
@@ -503,7 +515,7 @@ To get the addressee name, we use the formula
 ```
 string(first(body('Query_documents_V5')?['value'])?['ownerName'])
 ```
-![Configure Addressee Name](la/sendEmailAction5.JPG)
+![Configure Addressee Name](la/sendEmailAction6.JPG)
 
 We will now configure following text
 
@@ -515,16 +527,47 @@ To get the registration numnber we will use following formula
 body('Optical_Character_Recognition_(OCR)_to_Text')?['text']
 ```
 
-![Configure Registration Number](la/sendEmailAction6.JPG)
+![Configure Registration Number](la/sendEmailAction7.JPG)
 
 To get the ticket number, we will use the output of the compose action as used in step 35
 
-![Configure Ticket Number](la/sendEmailAction7.JPG)
+![Configure Ticket Number](la/sendEmailAction8.JPG)
 
 
 The configured body should look like follows
 
-![Configured Body](la/sendEmailAction8.JPG)
+![Configured Body](la/sendEmailAction9.JPG)
+
+Now lets set the attachment, the atachment is nothing but the blob that was uploaded to the `uploads` folder which triggered the workflow.
+
+Set the name of the name of the blob that was uploaded. We will use following formula to read the blob name
+```
+substring(variables('varBlobPath'),add(lastIndexOf(variables('varBlobPath'), '/'), 1))
+```
+
+![Configure Attachment Name](la/sendEmailAction10.JPG)
+
+To set the contents of the attachment we will use following formula
+
+```
+base64ToBinary(body('Get_blob_content_using_path_(V2)')?['$content'])
+```
+
+![Configure Attachment Content](la/sendEmailAction11.JPG)
+
+To set the content type of the attachment, we will use following formula
+
+```
+body('Get_blob_content_using_path_(V2)')?['$content-type']
+```
+![Configure Attachment Content Type](la/sendEmailAction12.JPG)
+
+Save the logic app
+
+
+
+
+
 
 
 
