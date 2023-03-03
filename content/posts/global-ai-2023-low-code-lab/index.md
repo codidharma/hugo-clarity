@@ -46,14 +46,20 @@ The lab will focus on following points
 3. Create a no code / low code logic apps workflow which processes images uploaded to the blob storage and sends a notification to culprit
 
 ## Solution
-The solution that can be implemented for the problem contains following steps
+
+Following is the architecture diagram for the solution and the steps involved
+![Architecture](arch.JPG)
+
+
 1. The image captured by motion cameras is upload to a blob storage container
 2. The image upload event triggers the logic app workflow
 3. The workflow retrieves the contents of the uploaded image
 4. The workflow invokes the computer vision API to extract the number using OCR
 5. The workflow retrieves the driver registration information and sends notification
 6. The workflow creates a ticket in the ticket database
-7. In case of failure, the workflow moves the image from the uploaded container to the container where some one manually process the image
+7. Notify the reistered owner of the infraction
+
+In case of failure, the workflow moves the image from the uploaded container to the container where some one manually process the image
 
 ## Setting Up Prerequisites
 
@@ -140,6 +146,21 @@ We will use the Azure Cosmos DB to store the fictional vehicle registration data
 2. Fill out the form as shown below an click on OK
   ![Form](cosmosdb/RegistrationContainer3JPG.JPG)
   ![Form](cosmosdb/RegistrationContainer2.JPG)
+
+3. Expand the registration container and click on items.
+
+4. Click on New Item at top and add following JSON (More details will be shared at the time of the live demo)
+
+```JSON
+{
+ "id": "<registration number>",
+  "ownerName": "<Name>",
+  "district": "Pune",
+  "contactEmail": "<Working Email Address>",
+}
+```
+
+5. Click on Save to save the item
 
 #### Tickets Container
 1. Click on New Container
@@ -563,6 +584,23 @@ body('Get_blob_content_using_path_(V2)')?['$content-type']
 ![Configure Attachment Content Type](la/sendEmailAction12.JPG)
 
 Save the logic app
+
+## Testing The Workflow
+
+You will be testing three scenarios
+1. When no text/ registration number is detected by the computer vision
+2. When registration number is detected by that registration number is not available in the `registration` container in Azure Cosmos DB
+3. When the registration number is detected and ticket is created and the infraction is notified over email.
+
+## Clean up
+
+Once done, you can delete the resource group created earlier along with all the resources to clean up the lab assets
+
+## Summmary
+
+In this lab, you learnt how easy it is to add AI and have quick working low code workflows. 
+
+
 
 
 
