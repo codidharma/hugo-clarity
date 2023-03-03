@@ -379,7 +379,152 @@ Finally it should look like below
 
 23. We will now code the postive path where the text is detected in image. We will do so on the false part of the condition.
 
-24. On the False Part, Click on `Add an action`
+24. On the False Part, Click on `Add an action`. In the search box, search for `Azure Cosmos DB` and select `Query Documents V5`
+
+![Search Azure Cosmos DB](la/selectcosmos1.JPG)
+![Select Query Documents V5](la/selectcosmos2.JPG)
+
+25. Once done, you will be presented the screen to create a connection to the Azure Cosmos DB. Here you will need the name of the Cosmos DB and access key saved earlier. Cofigure the connection as shown below and Click on Create
+
+![Configure Azure Cosmos DB Connection](la/configureCosmosDBConn.JPG)
+
+26. Since the registrations will be held across various districts, it is possible that a vehicle registered in one district can commit speeding infraction in another district, hence we will use for now a cross partition query. The query to get the registration against the vehicle number, we will use following SQL query.
+
+```SQL
+SELECT TOP 1 * FROM registration WHERE registration.id = "registration Number"
+```
+Configure the action as shown below and save the logic app
+![Step 1](la/configureQueryDocAction.JPG)
+![Step 2](la/configureQueryDocAction2.JPG)
+
+27. The response from the `Query Documents V5` will be an array and will be of following format
+
+```JSON
+[
+  {
+    "id": "MH15BD8877",
+    "ownerName": "Mandar Dharmadhikari",
+    "district": "Pune",
+    "contactEmail": "codidharma@gmail.com",
+    "_rid": "rJwmAPuVCTYBAAAAAAAAAA==",
+    "_self": "dbs/rJwmAA==/colls/rJwmAPuVCTY=/docs/rJwmAPuVCTYBAAAAAAAAAA==/",
+    "_etag": "\"00009c3b-0000-2000-0000-6400f7f50000\"",
+    "_attachments": "attachments/",
+    "_ts": 1677785077
+  }
+]
+```
+We will implement another fail safe logic here, if, i.e. `If there is no or multiple registration detected, we will move the blob to manualops contaier and delete the original blob.` 
+
+28. Click on `Add an action`. In the search bar, search for `Control` and select `Condition`.
+![Select Control](la/selectcondition.JPG)
+![Select Condition](la/selectcondition1.JPG)
+
+29. As mentioned in step 27, we will check if the `Query Document V5` returns no or multiple registrations. Configure the conditions as shown below
+
+![Step 1](la/noormultregcond1.JPG)
+![Step2](la/noormultregcond2.JPG)
+
+What we have done is check if the number of documents is received is 1 or not. If not, we implement the fail safe logic else we issue notification to vehicle owner.
+
+30. To implement the fail safe logic in False path, follow steps from 19 to 22
+
+31. Let us now implement the path to send email notification to the culprit. 
+
+32. We will first create a ticket record in the `tickets` container in cosmos db. For simplicity, we will generate a guid as the ticket number and store it using compose action
+
+![Save ticket number in compose](la/storeticket.JPG)
+
+,in real world, this ticket number can be alpha numeric.
+
+
+
+33. In the search box, search for `Azure Cosmos DB` and Select `Create or Update a Document V3`.
+
+![Search Azure Cosmos DB](la/selectcosmos1.JPG)
+![Select Create or Update Document V3](la/selectCreateDocCosmos.JPG)
+
+34. Configure the properties as shown below
+
+![Step 1](la/createDoc1.JPG)
+
+35. We now need to create the document that we want to store in the cosmos db. Remember that we have used `district` as the partition id in our `tickets` container. In real world, you will have infraction happening in same or different districts and you can have multiple logical way of determining the place where infraction occure, for now,lets assume that the place of infraction and place of vehicle registration is same district. 
+
+Lets start by setting the Document Id, which will be the ticket number. 
+![Configure Document Id](la/configuredocument.JPG)
+
+We will now set other properties like the Vehicle Registration Number and Owner Name. Since we know for sure that we will get to this step when only one registration is found, we will use following formula, to extract the vehicle registration number, owner name and district respectively.
+
+```
+string(first(body('Query_documents_V5')?['value'])?['id'])
+string(first(body('Query_documents_V5')?['value'])?['ownerName'])
+string(first(body('Query_documents_V5')?['value'])?['district'])
+
+```
+Configure them as shown below.
+![Configure Registration Number](la/configuredocument2.JPG)
+![Configure Owner Name](la/configuredocument3.JPG)
+![Configure District](la/configuredocument4.JPG)
+
+Save the logic app once done
+
+
+36. Lets us now code the final logic to send the email notification. In the true path of the condition created in step 28, click on `Add an action`. In the search box, search for `Gmail` and select `Send email V2`
+![Search Gmail](la/selectGmail.JPG)
+![Select Send Email V2](la/selectGmail2.JPG)
+
+37. You will now be presented to configure the Gmail connection by Signining in. Configure the connection as shown below and click on SignIn and follow the sign in process as prompted
+
+![Configure Gmai connection](la/configureGmailConn.JPG)
+
+38. Now we configure the action. By default you will only see option to configure `To` email address only. We will need other parameters like Subject, Body, Attachments etc to send a proper mail. To get these, click on the `Add new parameter` dropdown and select as shown below and then click outside the dropdown to get these parameters
+
+![Select Extra Parameters](la/sendEmailAction1.JPG)
+
+![Parameters Selected](la/sendEmailAction2.JPG)
+
+39. To get the `To` email address, we have to get the email address from the output of the `Query Documents V5`. Since we know for sure that we will get to sending email when only one registration is found, we will use following formula, to extract the email address
+
+```
+string(first(body('Query_documents_V5')?['value'])?['contactEmail'])
+```
+configure the `To` field as shown below
+
+![Configure To Email Address](la/sendEmailAction3.JPG)
+
+To configure the Subject, follow the step below
+
+![Configure Subject](la/sendEmailAction4.JPG)
+
+To Set Body of the email, follow below steps
+
+To get the addressee name, we use the formula 
+
+```
+string(first(body('Query_documents_V5')?['value'])?['ownerName'])
+```
+![Configure Addressee Name](la/sendEmailAction5.JPG)
+
+We will now configure following text
+
+`A speeding infraction has been recorded against the vehicle <Registration> registered to you. A ticket <ticket number> has been issued against you with a fine of Rs 500. Please pay your dues by visting nearest office of department of transport`
+
+To get the registration numnber we will use following formula
+
+```
+body('Optical_Character_Recognition_(OCR)_to_Text')?['text']
+```
+
+![Configure Registration Number](la/sendEmailAction6.JPG)
+
+To get the ticket number, we will use the output of the compose action as used in step 35
+
+![Configure Ticket Number](la/sendEmailAction7.JPG)
+
+
+The configured body should look like follows
+
+![Configured Body](la/sendEmailAction8.JPG)
 
 
 
