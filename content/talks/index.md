@@ -6,14 +6,16 @@ layout: "talks"
 
 <a name=#top></a>
 
-I have a zeal for sharing my learnings with others so that we grow together as one tech community. If you would like me to speak at an event you are organizing or attending, please drop me a line.
+I have a zeal for sharing my learnings with others so that we grow together as one tech community. If you would like me to speak at an event you are organizing or attending, please [drop me a line](/contact).
 
 # Upcoming Events
-Taking a sabbatical from speaking due to family commitments. If you would like me to speak at your event, please [drop me a line](/contact).
+
 
 ---
 
 # Current Talks
+* [Building a Serverless Speeding Infraction System under 60 Minutes](#speedinginfractionapp)
+* [Cleaner Business Rules with JSON Rules Engine and Azure Functions](#businessrulesint)
 * [To Logic Apps or Power Automate: That is the Question?](#laorpa)
 * [Deploying .NET Core Web API to Azure App using GitHub Actions](#webapiwithgithubactions)
 * [Automating Logic Apps deployment with GitHub Actions](#lawithgithubactions)
@@ -30,9 +32,22 @@ Taking a sabbatical from speaking due to family commitments. If you would like m
 * [Administering BizTalk Server with a ChatBot](#administeringbiztalk)
 ---
 
+
 # Past Presentations
 
+## 2023
+**Global Integration Bootcamp<span>Mumbai, India (March 4th)</span>**
+* [Building a Serverless Speeding Infraction System under 60 Minutes](#speedinginfractionapp)
+
+[Global AI Bootcamp 2023, Mumbai](https://globalai.community/bootcamp-2023/asia-india-mumbai-5810/)
+
+![Banner](banner.jpg)
+
 ## 2022
+
+**Dear Azure Weekly Presentations<span> - Online (November 13th)</span>**
+* [Cleaner Business Rules with JSON Rules Engine and Azure Functions](#businessrulesint)
+{{< youtube gtFZPVIZyBU>}}
 
 **Dear Azure Weekly Presentations<span> - Online (November 6th)</span>**
 * [To Logic Apps or Power Automate: That is the Question?](#laorpa)
@@ -99,6 +114,15 @@ Taking a sabbatical from speaking due to family commitments. If you would like m
 
 ---
 # Talk Details
+
+##<a name = "speedinginfractionapp"></a> Through this talk I demonstrate to attendees how easy it is to create and prototype AI infused logic apps workflows even without having prior coding or AI experience.
+
+[back to top](#top)
+
+##<a name="businessrulesint"></a> Cleaner Business Rules with JSON Rules Engine and Azure Functions
+This is an advanced level session which talk about how we can create a serverless rules engine using Open Source JSON rules engine from Microsoft and Azure Functions.
+
+[back to top](#top)
 
 ## <a name="laorpa"></a>To Logic Apps or Power Automate: That is the Question?
 This is an intermediate level session where I present based on my past experience, the process I use to determine if I should use Logic Apps or Power Automate for a workflow in my project.
