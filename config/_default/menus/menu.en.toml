@@ -44,23 +44,28 @@
 
 
 # social menu links
+[[social]]
+  name="youtube"
+  type = "social"
+  weight = 1
+  url = "https://www.youtube.com/@codidharma"
 
 [[social]]
   name = "github"
   type = "social"
-  weight = 1
+  weight = 2
   url = "https://github.com/codidharma"
 [[social]]
   name = "twitter"
-  weight = 2
+  weight = 3
   url = "https://twitter.com/codidharma"
 [[social]]
   name = "linkedin"
-  weight = 3
+  weight = 4
   url = "https://www.linkedin.com/in/mandar-dharmadhikari"
 [[social]]
   name = "rss"
-  weight = 4
+  weight = 5
   url = "index.xml"
 
 # other supported social links
