@@ -21,8 +21,10 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><b>{{ .company }}</b></h5>
-                <small>{{ .date }}</small>
-                <h5 class="card-title"><b>{{ .job }}</b></h5>
+                <div class="float-end">
+                  <small>{{ .date }}</small>
+                </div>
+                <h5 class="card-title">{{ .job }}</h5>
                 <div class="py-1 experience-content">
                   <p><b>Roles and Responsibilities:</b></p>
                   {{ .content | markdownify}}

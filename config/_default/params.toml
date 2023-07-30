@@ -211,3 +211,18 @@ I am currently working on a project that will be used to help people find the be
 - Lead backend developer for a product.
 - Created a frontend design for a product.
 """
+
+[profile.education]
+  enable = true
+  index = false
+  title="My Education"
+
+[[profile.education.items]]
+    title = "Bachelor of Engineering in Electronics and Telecommunication"
+    class = "Class of 2012"
+    date = "2009 - 2013"
+    GPA = "3.7 out of 5.0"
+    content = ""
+  [profile.education.items.school]
+      name = "Sant Gadge Baba Amravati University"
+

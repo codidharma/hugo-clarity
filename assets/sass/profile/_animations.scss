@@ -1,0 +1,70 @@
+/* Animation */
+@keyframes fade-in {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+@keyframes fade-bottom {
+0% {
+  transform: translateY(50px);
+  opacity: 0;
+}
+100% {
+  transform: translateY(0);
+  opacity: 1;
+}
+}
+@keyframes fade-left {
+0% {
+  transform: translateX(-10px);
+  opacity: 0;
+}
+100% {
+  transform: translateX(0);
+  opacity: 1;
+}
+}
+
+@keyframes fade-right {
+0% {
+  transform: translateX(20px);
+  opacity: 0;
+}
+100% {
+  transform: translateX(0);
+  opacity: 1;
+}
+}
+
+/* Header animation */
+@keyframes fade-up {
+0% {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+100% {
+  transform: translateY(0);
+  opacity: 1;
+}
+}
+
+header .navbar.animate {
+  animation: fade-up 0.5s ease-in;
+}
+
+
+/* ToolTip */
+
+.tooltip {
+  line-height: 1rem;
+  border-radius: .5rem !important;
+}
+.tooltip-inner {
+  line-height: 1rem;
+}
+.tooltip .tooltip-arrow {
+  visibility: hidden !important;
+}
