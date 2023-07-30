@@ -23,11 +23,6 @@
  # name = "C# Language"
  # url = "courses/cshp"
 
-[[main]]
-  name = "Profile"
-  url = "profile/"
-  weight = -108
-
   [[main]]
   name = "Talks"
   url = "talks/"
