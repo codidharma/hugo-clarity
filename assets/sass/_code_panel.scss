@@ -1,0 +1,55 @@
+.panel_box {
+  display: inline-flex;
+  perspective: 300px;
+  grid-gap: 0.5rem;
+  transition: opacity 0.3s var(--easing);
+  background: #B8B8B8;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  align-items: center;
+  position: absolute;
+  right: 0rem;
+  top: -2.1rem;
+  opacity: 0
+}
+
+.panel_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.1rem;
+  transform-origin: 50% 50%;
+  background-size: 100%;
+  background-repeat: no-repeat
+}
+
+.panel_icon.active {
+  animation: pulse 0.1s linear
+}
+
+.panel_icon svg {
+  fill: var(--light);
+  width: 1.5rem;
+  height: 1.5rem
+}
+
+.panel_hide {
+  display: none
+}
+
+.panel_from {
+  position: absolute;
+  color: var(--theme);
+  bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  letter-spacing: 0.1px;
+  z-index: 19
+}
+
+.panel_expanded .panel_from {
+  display: none
+}
