@@ -187,3 +187,27 @@ I am currently working on a project that will be used to help people find the be
     enable = true
     title = "Here are a few technologies I've been working with recently:"
     items = [ "HTML", "CSS", "JavaScript", "React", "Node", "Express" ]
+
+[profile.experience]
+  enable = true
+  title= "My work Experience"
+  index = false
+
+  [[profile.experience.items]]
+    job = "Senior Software Developer"
+    company = "Facebook"
+    companyUrl = "https://example.com"
+    date = "Jan 2022 - present"
+    content = "I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city."
+
+
+[[profile.experience.items]]
+    job = "Software Developer"
+    company = "Amazon"
+    companyUrl = "https://example.com"
+    date = "Sep 2020 - Dec 2021"
+    content = """
+
+- Lead backend developer for a product.
+- Created a frontend design for a product.
+"""

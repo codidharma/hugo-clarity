@@ -1,0 +1,40 @@
+#achievements a {
+  text-decoration: none;
+}
+
+#achievements h3 {
+  color: var(--text-secondary-color) !important;
+}
+
+#achievements .card {
+  cursor: context-menu;
+  background-color: var(--secondary-color) !important;
+  border-radius: 1rem;
+  box-shadow: 0 0 36px rgba(0,0,0,0.1);
+  /* transform: translate3d(0, 0, 0); */
+  transition: box-shadow .2s linear,opacity .2s linear;
+  border: 2px solid transparent;
+}
+
+#achievements a.card {
+  cursor: alias;
+}
+
+#achievements .card h5 {
+  color: var(--text-color) !important;
+  opacity: 0.9;
+}
+
+#achievements .card:hover {
+  border: 2px solid var(--text-color);
+  transition: .3s;
+}
+#achievements .card:focus {
+  border: 2px solid var(--text-color);
+  transition: .3s;
+}
+
+#achievements .card-text {
+  background-color: var(--secondary-color) !important;
+  color: var(--text-secondary-color) !important;
+}
