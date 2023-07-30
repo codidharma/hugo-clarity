@@ -226,3 +226,23 @@ I am currently working on a project that will be used to help people find the be
   [profile.education.items.school]
       name = "Sant Gadge Baba Amravati University"
 
+
+[profile.certifications]
+  enable = true
+  title = "My Certifications"
+
+[[profile.certifications.items]]
+  badgeId= "a6c850e3-873c-49a5-aaed-250d69c7ab0b"
+
+[[profile.certifications.items]]
+  badgeId= "eea77b86-8d89-4d6e-8767-f6413c723f67"
+
+[[profile.certifications.items]]
+  badgeId= "4dc76bfd-7093-4279-a1c6-3d9a90c260d2"
+
+[[profile.certifications.items]]
+  badgeId= "466acbbe-b699-4996-8038-e97854d9b00c"
+
+[[profile.certifications.items]]
+  badgeId= "af3e7b58-5263-47e0-b2e1-5433ceb643ab"
+
