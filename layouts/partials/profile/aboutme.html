@@ -1,0 +1,20 @@
+{{- $me := .Site.Params.profile.aboutme}}
+<section id="about">
+  <div class="container">
+    <h3 class="text-center bg-transparent">{{$me.title}}</h3>
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-8 content">
+        {{ $me.content | markdownify }}
+        {{ if $me.skills.enable }}
+        {{ $me.skills.title }}
+        <ul>
+          {{range $me.skills.items}}
+            <li>{{. | markdownify }}</li>
+          {{end}}
+        </ul>
+
+        {{end}}
+      </div>
+    </div>
+  </div>
+</section>
