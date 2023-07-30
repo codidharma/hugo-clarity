@@ -1,0 +1,31 @@
+{{- $intro := .Site.Params.profile.intro}}
+<section id="intro" class="py-5 align-middle">
+  <div class="container px-3 px-sm-5 px-md-5 px-lg-5 pt-lg-3">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-8 content animate" id="primary-font">
+        <span class="subtitle">
+          {{ $intro.intro}}
+        </span>
+        <h2>
+          {{$intro.title}}
+        </h2>
+        <h3>
+          {{$intro.subtitle}}
+        </h3>
+        <p class="intro-content">
+          {{$intro.content | markdownify}}
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-4">
+        <div class="row justify-content-center">
+          <div class="col-sm-12 col-md-9 pt-5 image animate px-5 px-md-5 px-lg-0 text-center">
+            <img src="{{ absURL $intro.image }}"
+                          class="img-thumbnail mx-auto"
+                          alt=""
+                      >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

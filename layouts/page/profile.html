@@ -2,14 +2,6 @@
 {{- $s := .Site.Params }}
 {{- $p := .Params }}
 
-<div class="wrap content">
-  <div class="row">
-    <div >
-      <img class="headshot img-thumbnail"  src="{{ absURL $s.about.bannerLocation }}">
-  </div>
-    <div class="post_content">
-      {{- .Content }}
-    </div>
-  </div>
-</div>
+{{- partial "profile/intro.html" . -}}
+
 {{- end }}
