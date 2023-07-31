@@ -272,29 +272,34 @@ I also enjoy mentoring colleagues and have managed small and medium size teams
 [[profile.certifications.items]]
   badgeId= "af3e7b58-5263-47e0-b2e1-5433ceb643ab"
 
-[profile.achievements]
+[profile.techstack]
   enable = true
 
-    [[profile.achievements.items]]
-    title = "Google kickstart runner"
+    [[profile.techstack.items]]
+    title = "C Sharp"
+    image="/images/tech/cshp.svg"
     content = "I solved all problems with optimal solution."
 
 
-    [[profile.achievements.items]]
-    title = "Facebook Hackathon Winner"
+    [[profile.techstack.items]]
+    title = "Python"
+    image="/images/tech/python.svg"
     content = "Developed a product using Artificial Intelligence."
 
-    [[profile.achievements.items]]
-    title = "Hugo Profile"
+    [[profile.techstack.items]]
+    title = "Hugo Scripting"
+    image="/images/tech/hugo.svg"
     content = "Developed a theme and getting 1K+ downloads per month."
 
 
-    [[profile.achievements.items]]
-    title = "Microsoft Imagine Runner"
-    content = "We are developed a product which can help others."
+    [[profile.techstack.items]]
+    title = ".NET Core Platform"
+    image="/images/tech/netcore.svg"
 
-    [[profile.achievements.items]]
-    title = "Google Summer of Code"
-    content = "Contributed to a open source project."
+    [[profile.techstack.items]]
+    title = "Microsoft Azure"
+    image="/images/tech/azure.svg"
 
-
+    [[profile.techstack.items]]
+    title = "Microsoft Power Platform"
+    image="/images/tech/pp.svg"

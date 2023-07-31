@@ -1,10 +1,10 @@
-{{ if .Site.Params.profile.achievements.enable | default false }}
+{{ if .Site.Params.profile.techstack.enable | default false }}
 <section id="techstack" class="py-5">
     <div class="container">
-        <h3 class="text-center">{{ .Site.Params.profile.achievements.title | default "Achievements" }}</h3>
+        <h3 class="text-center">{{ .Site.Params.profile.techstack.title | default "Technologies I Use" }}</h3>
         <div class="px-0 px-md-5 px-lg-5">
             <div class="row justify-content-center px-3 px-md-5 px-lg-5">
-                {{ range .Site.Params.profile.achievements.items }}
+                {{ range .Site.Params.profile.techstack.items }}
                 {{ if .url }}
                 <div class="col-lg-4 col-md-6 my-3">
                     <a class="card my-3 h-100 p-3" href="{{ .url }}" title="{{ .title }}" target="_blank">
@@ -19,11 +19,11 @@
                 {{ else }}
                 <div class="col-lg-4 col-md-6 my-3">
                     <div class="card my-3 h-100 p-3" title="{{ .title }}">
-                        <div class="card-body bg-transparent">
-                            <h5 class="card-title bg-transparent">{{ .title }}</h5>
-                            <div class="card-text secondary-font">
-                                {{ .content }}
+                        <div class="card-body bg-transparent align-items-end">
+                            <div class="text-center">
+                              <img src="{{relURL .image}}" class="img-thumbnail">
                             </div>
+                            <h5 class="card-title bg-transparent text-center">{{ .title }}</h5>
                         </div>
                     </div>
                 </div>
