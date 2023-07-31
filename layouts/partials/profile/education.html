@@ -6,7 +6,30 @@
       {{ $indexMenu := $edu.index }}
       {{ range $index, $element := $edu.items }}
       <div class="col-12 p-0">
-        <div class="row row align-items-center justify-content-center m-1 mb-4">
+        <div class="card">
+          <div class="card-body">
+
+            <h5 class="card-title"><b>{{ .title }}</b></h5>
+            {{ .school.name }}
+
+
+            <div >
+              <small>{{ .class }}</small>
+            </div>
+            {{if .GPA}}
+            <div class="py-1">
+              GPA:
+              <i>
+                <small>{{.GPA}}</small>
+              </i>
+            </div>
+            {{end}}
+            <div class="py-1 education-content">
+              {{ .content | markdownify}}
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row row align-items-center justify-content-center m-1 mb-4">
           {{ if $indexMenu }}
             <div class="col-md-1 text-center me-2 p-0 d-none d-md-block">
               <div class="py-2">
@@ -17,31 +40,9 @@
             </div>
           {{end}}
           <div class="col-md-9">
-            <div class="card">
-              <div class="card-body">
 
-                <h5 class="card-title"><b>{{ .title }}</b></h5>
-                {{ .school.name }}
-
-
-                <div >
-                  <small>{{ .class }}</small>
-                </div>
-                {{if .GPA}}
-                <div class="py-1">
-                  GPA:
-                  <i>
-                    <small>{{.GPA}}</small>
-                  </i>
-                </div>
-                {{end}}
-                <div class="py-1 education-content">
-                  {{ .content | markdownify}}
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
+        </div> -->
       </div>
       {{end}}
 

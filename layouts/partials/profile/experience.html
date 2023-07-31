@@ -7,7 +7,20 @@
       {{ $indexMenu := $exp.index }}
       {{ range $index, $element := $exp.items }}
       <div class="col-12 p-0">
-        <div class="row row align-items-center justify-content-center m-1 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><b>{{ .company }}</b></h5>
+            <div class="float-end">
+              <small>{{ .date }}</small>
+            </div>
+            <h5 class="card-title">{{ .job }}</h5>
+            <div class="py-1 experience-content">
+              <p><b>Roles and Responsibilities:</b></p>
+              {{ .content | markdownify}}
+          </div>
+          </div>
+        </div>
+        <!-- <div class="row row align-items-center justify-content-center m-1 mb-4">
           {{ if $indexMenu }}
           <div class="col-md-1 text-center me-2 p-0 d-none d-md-block">
             <div class="py-2">
@@ -18,21 +31,9 @@
           </div>
           {{end}}
           <div class="col-md-9">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"><b>{{ .company }}</b></h5>
-                <div class="float-end">
-                  <small>{{ .date }}</small>
-                </div>
-                <h5 class="card-title">{{ .job }}</h5>
-                <div class="py-1 experience-content">
-                  <p><b>Roles and Responsibilities:</b></p>
-                  {{ .content | markdownify}}
-              </div>
-              </div>
-            </div>
+
           </div>
-        </div>
+        </div> -->
       </div>
       {{end}}
     </div>
