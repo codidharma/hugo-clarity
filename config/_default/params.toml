@@ -174,9 +174,10 @@ bannerLocation = "images/talks/banner.jpg"
 
 [profile.intro]
   intro = "Hi, my name is"
-  title = "Mandar."
-  subtitle = "I build things for the web"
-  content = "A passionate web app developer. I tend to make use of modern web technologies to build websites that looks great, feels fantastic, and functions correctly."
+  title = "Mandar"
+  subtitle = "I design and build code that solves business problems"
+  content = """Experienced pro-code and low-code cloud solutions architect with more than a decade of expertise in building line of business services and systems integration across insurance
+   and banking verticals."""
   image = "/images/mandar.jpg"
 
 [profile.intro.resume]
@@ -184,9 +185,9 @@ bannerLocation = "images/talks/banner.jpg"
     download = true
 
 [[profile.intro.clickableActions]]
-  url="https://example.com"
-  actionName = "Resume"
-  ionIconName = "download-outline"
+  url= "https://twitter.com/codidharma"
+  actionName = "Twitter"
+  ionIconName = "logo-twitter"
 
 [[profile.intro.clickableActions]]
   url="https://www.linkedin.com/in/mandar-dharmadhikari"
