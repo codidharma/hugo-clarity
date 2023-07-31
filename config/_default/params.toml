@@ -177,7 +177,7 @@ bannerLocation = "images/talks/banner.jpg"
 [profile.aboutme]
   enable = true
   title = "More About Me"
-  image = "/images/profilepic.png"
+  image = "/images/mandar.jpg"
   content = """
 I am a software developer with a passion for web development. I have a background in computer science and mathematics, and I have a strong interest in the intersection of technology and art. I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA.
 

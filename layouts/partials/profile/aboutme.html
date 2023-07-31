@@ -3,17 +3,18 @@
   <div class="container">
     <h3 class="text-center bg-transparent">{{$me.title}}</h3>
     <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-4">
+        <div class="row justify-content-center">
+          <div class="col-sm-12 col-md-9 pt-5 image animate  text-center">
+            <img src="{{ absURL $me.image }}"
+                          class="img-thumbnail mx-auto"
+                          alt=""
+                      >
+          </div>
+        </div>
+      </div>
       <div class="col-sm-12 col-md-12 col-lg-8 content">
         {{ $me.content | markdownify }}
-        {{ if $me.skills.enable }}
-        {{ $me.skills.title }}
-        <ul>
-          {{range $me.skills.items}}
-            <li>{{. | markdownify }}</li>
-          {{end}}
-        </ul>
-
-        {{end}}
       </div>
     </div>
   </div>
