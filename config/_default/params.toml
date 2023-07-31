@@ -161,6 +161,11 @@ theme = "preferred_color_scheme"
 label = "comment" # Label applied to issue by utteranc.es bot
 lang = "en"
 
+# Custom CDN Javascript embeddings
+[[cdnJS.items]]
+  url="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+
+
 [about]
 bannerLocation = "images/about/banner.jpg"
 
@@ -177,6 +182,22 @@ bannerLocation = "images/talks/banner.jpg"
 [profile.intro.resume]
     url="https://example.com"
     download = true
+
+[[profile.intro.clickableActions]]
+  url="https://example.com"
+  actionName = "Resume"
+  ionIconName = "download-outline"
+
+[[profile.intro.clickableActions]]
+  url="https://www.linkedin.com/in/mandar-dharmadhikari"
+  actionName = "linkedin"
+  ionIconName = "logo-linkedin"
+
+[[profile.intro.clickableActions]]
+  url="https://www.linkedin.com/in/mandar-dharmadhikari"
+  actionName = "GITHUB "
+  ionIconName = "logo-github"
+
 
 [profile.aboutme]
   enable = true

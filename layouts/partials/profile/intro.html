@@ -18,12 +18,13 @@
         </p>
         <div class="row">
           <div class="col-auto h-100">
-            <a href="{{absURL $intro.resume.url}}" class="button" target="_blank" {{ cond $intro.resume.download "download" "" }}>
+            {{- partial "profile/introactionitems.html" . -}}
+            <!-- <a href="{{absURL $intro.resume.url}}" class="button" target="_blank" {{ cond $intro.resume.download "download" "" }}>
               Resume
             </a>
             <a href="{{absURL $contact}}" class="button" target="_blank">
               Cotanct Me
-            </a>
+            </a> -->
           </div>
         </div>
       </div>

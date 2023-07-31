@@ -1,0 +1,10 @@
+{{- $intro := .Site.Params.profile.intro}}
+{{- range $intro.clickableActions}}
+<button type="button" class="introactionbutton"
+  onclick="window.open('{{absURL .url}}', '_blank')">
+  <span class="introactionbutton-text">{{.actionName}}</span>
+  <span class="introactionbutton-icon">
+    <ion-icon name="{{.ionIconName}}"></ion-icon>
+  </span>
+</button>
+{{end}}
