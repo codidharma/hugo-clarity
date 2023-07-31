@@ -80,8 +80,8 @@ mobileNavigation = "left" # if you prefer right change to 'right'
 
 # please also not that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way.
 
-enforceLightMode = false
-# enforceDarkMode = false
+#enforceLightMode = false
+ enforceDarkMode = true
 
 # customize footer icon. see issue https://github.com/chipzoller/hugo-clarity/issues/77
 # footerLogo = "icons/copy.svg"
@@ -205,14 +205,14 @@ bannerLocation = "images/talks/banner.jpg"
   title = "More About Me"
   image = "/images/mandar.jpg"
   content = """
-I am a software developer with a passion for web development. I have a background in computer science and mathematics, and I have a strong interest in the intersection of technology and art. I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA.
-
-I am currently working on a project that will be used to help people find the best way to get around the city."""
+Technology Nerd with a penchant for public speaking. I enjoy marrying the business needs with appropriate technologies to deliver business value.
+I also enjoy mentoring colleagues and have managed small and medium size teams
+"""
 
  [profile.aboutme.skills]
     enable = true
-    title = "Here are a few technologies I've been working with recently:"
-    items = [ "HTML", "CSS", "JavaScript", "React", "Node", "Express" ]
+    title = "I am experienced in:"
+    items = [ "Cloud Native Systems Design","Test Driven Development", "CRM Systems Design", "Agile Development","Team Management", "Public Speaking" ]
 
 [profile.experience]
   enable = true

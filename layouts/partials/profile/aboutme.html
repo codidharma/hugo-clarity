@@ -15,6 +15,15 @@
       </div>
       <div class="col-sm-12 col-md-12 col-lg-8 content">
         {{ $me.content | markdownify }}
+
+        {{ if $me.skills.enable }}
+                <h6>{{ $me.skills.title }}</h6>
+                <ul>
+                    {{ range $me.skills.items }}
+                    <li>{{ . | markdownify }}</li>
+                    {{ end }}
+                </ul>
+        {{ end }}
       </div>
     </div>
   </div>

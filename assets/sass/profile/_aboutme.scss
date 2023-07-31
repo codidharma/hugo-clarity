@@ -33,7 +33,7 @@
 
 #about ul li::before {
   content: "▹";
-  color: var(--primary-color);
+  color:  $theme;//var(--primary-color);
   position: absolute;
   left: 0px;
 }
