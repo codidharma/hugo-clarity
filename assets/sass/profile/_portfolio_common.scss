@@ -1,6 +1,9 @@
 .p-0 {
 	padding: 0 !important;
 }
+.p-3 {
+	padding: 1rem !important;
+}
 .px-3 {
 	padding-right: 1rem !important;
 	padding-left: 1rem !important;
@@ -132,10 +135,21 @@
 	padding-right: 15px;
 	padding-left: 15px;
 }
+.col-md-6 {
+	position: relative;
+	width: 100%;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
 
 .mx-auto {
 	margin-right: auto !important;
 	margin-left: auto !important;
+}
+.my-3 {
+	margin-top: 1rem !important;
+	margin-bottom: 1rem !important;
 }
 .m-1 {
 	margin: .25rem !important;
@@ -171,6 +185,12 @@
 {
   .container {
 		max-width: 720px;
+	}
+  .col-md-6 {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 50%;
+		flex: 0 0 50%;
+		max-width: 50%;
 	}
   .col-md-9 {
 		-webkit-box-flex: 0;

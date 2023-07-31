@@ -272,3 +272,29 @@ I also enjoy mentoring colleagues and have managed small and medium size teams
 [[profile.certifications.items]]
   badgeId= "af3e7b58-5263-47e0-b2e1-5433ceb643ab"
 
+[profile.achievements]
+  enable = true
+
+    [[profile.achievements.items]]
+    title = "Google kickstart runner"
+    content = "I solved all problems with optimal solution."
+
+
+    [[profile.achievements.items]]
+    title = "Facebook Hackathon Winner"
+    content = "Developed a product using Artificial Intelligence."
+
+    [[profile.achievements.items]]
+    title = "Hugo Profile"
+    content = "Developed a theme and getting 1K+ downloads per month."
+
+
+    [[profile.achievements.items]]
+    title = "Microsoft Imagine Runner"
+    content = "We are developed a product which can help others."
+
+    [[profile.achievements.items]]
+    title = "Google Summer of Code"
+    content = "Contributed to a open source project."
+
+

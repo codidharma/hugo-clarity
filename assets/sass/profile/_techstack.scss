@@ -1,0 +1,40 @@
+#techstack a {
+  text-decoration: none;
+}
+
+#techstack h3 {
+  color: var(--text-secondary-color) !important;
+}
+
+#techstack .card {
+  cursor: context-menu;
+  background-color: var(--secondary-color) !important;
+  border-radius: 1rem;
+  box-shadow: 0 0 36px rgba(15, 80, 100, 0.50);
+  /* transform: translate3d(0, 0, 0); */
+  transition: box-shadow .2s linear,opacity .2s linear;
+  border: 2px solid transparent;
+}
+
+#techstack a.card {
+  cursor: alias;
+}
+
+#techstack .card h5 {
+  color: var(--text-color) !important;
+  opacity: 0.9;
+}
+
+#techstack .card:hover {
+  border: 2px solid var(--text-color);
+  transition: .3s;
+}
+#techstack .card:focus {
+  border: 2px solid var(--text-color);
+  transition: .3s;
+}
+
+#techstack .card-text {
+  background-color: var(--secondary-color) !important;
+  color: var(--text-secondary-color) !important;
+}
