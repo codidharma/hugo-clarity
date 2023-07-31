@@ -253,25 +253,6 @@ I also enjoy mentoring colleagues and have managed small and medium size teams
       name = "Sant Gadge Baba Amravati University"
 
 
-[profile.certifications]
-  enable = true
-  title = "My Certifications"
-
-[[profile.certifications.items]]
-  badgeId= "a6c850e3-873c-49a5-aaed-250d69c7ab0b"
-
-[[profile.certifications.items]]
-  badgeId= "eea77b86-8d89-4d6e-8767-f6413c723f67"
-
-[[profile.certifications.items]]
-  badgeId= "4dc76bfd-7093-4279-a1c6-3d9a90c260d2"
-
-[[profile.certifications.items]]
-  badgeId= "466acbbe-b699-4996-8038-e97854d9b00c"
-
-[[profile.certifications.items]]
-  badgeId= "af3e7b58-5263-47e0-b2e1-5433ceb643ab"
-
 [profile.techstack]
   enable = true
 
@@ -303,3 +284,35 @@ I also enjoy mentoring colleagues and have managed small and medium size teams
     [[profile.techstack.items]]
     title = "Microsoft Power Platform"
     image="/images/tech/pp.svg"
+
+[profile.certifications]
+  enable = true
+
+  [[profile.certifications.items]]
+    verificationUrl= "https://www.credly.com/badges/2ed17beb-51ef-4149-9017-6f508a87c491/public_url"
+    image="images/certs/ppsa.png"
+
+  [[profile.certifications.items]]
+    verificationUrl="https://www.credly.com/badges/9ceb4d15-8b10-4373-932d-155e67db167e/public_url"
+    image="images/certs/ppfunc.png"
+
+  [[profile.certifications.items]]
+    verificationUrl="https://www.credly.com/badges/466acbbe-b699-4996-8038-e97854d9b00c/public_url"
+    image="images/certs/aiengg.png"
+
+  [[profile.certifications.items]]
+    verificationUrl="https://www.credly.com/badges/af3e7b58-5263-47e0-b2e1-5433ceb643ab/public_url"
+    image="images/certs/salesfunc.png"
+
+    [[profile.certifications.items]]
+    verificationUrl="https://www.credly.com/badges/58aa78c3-6713-4c29-9f75-0b214ce15c4b/public_url"
+    image="images/certs/ppfund.png"
+
+  [profile.certifications.verify]
+  baseURL = "https://www.credly.com/badges"
+  actionName = "Verify Badge"
+  ionIconName = "shield-checkmark-outline"
+
+
+
+
