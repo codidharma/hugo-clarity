@@ -1,7 +1,4 @@
-[[main]]
-  name = "Home"
-  url = "profile"
-  weight = -110
+
 
 [[main]]
   name = "Blog"
@@ -28,17 +25,6 @@
   url = "talks/"
   weight = -107
 
-  [[main]]
-  name = "About Me"
-  url = "about/"
-  weight = -106
-
-[[main]]
-  name = "Contact Me"
-  url = "contact/"
-  weight = -105
-
-
 # Submenus are done this way: parent -> identifier
 
 
@@ -62,10 +48,6 @@
   name = "linkedin"
   weight = 4
   url = "https://www.linkedin.com/in/mandar-dharmadhikari"
-[[social]]
-  name = "rss"
-  weight = 5
-  url = "index.xml"
 
 # other supported social links
 # name = "youtube"
