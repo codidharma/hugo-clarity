@@ -1,0 +1,21 @@
+{{- $ps := .Site.Params.profile.publicspeaking}}
+{{ if $ps.enable | default false }}
+<section id="publicspeaking" class="py-5">
+    <div class="container">
+        <h3 class="text-center">{{ $ps.title | default "My Top Certifications" }}</h3>
+        <div class="image animate text-center">
+          <img src="{{relURL $ps.banner}}" class="img-thumbnail">
+        </div>
+        <p class="text-center">{{$ps.content}}</p>
+        <div class="text-center">
+          <button type="button" class="psactionbutton"
+          onclick="window.open('{{relURL $ps.talksPageUrl}}', '_blank')">
+          <span class="psactionbutton-text">{{$ps.actionName}}</span>
+          <span class="psactionbutton-icon">
+            <ion-icon name="{{$ps.ionIconName}}"></ion-icon>
+          </span>
+        </button>
+      </div>
+    </div>
+</section>
+{{ end }}

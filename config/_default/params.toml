@@ -353,6 +353,15 @@ I also enjoy mentoring colleagues and have managed small and medium size teams
   actionName = "Verify Badge"
   ionIconName = "shield-checkmark-outline"
 
+  [profile.publicspeaking]
+  enable = true
+  title = "Public Speaking Activities"
+  talksPageUrl = "/talks"
+  actionName = "Explore My Talks"
+  ionIconName = "arrow-forward-outline"
+  content = "I have a zeal for sharing my knowledge"
+  banner = "images/talks/banner.jpg"
+
 
 
 
