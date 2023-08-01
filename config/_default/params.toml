@@ -362,6 +362,16 @@ I also enjoy mentoring colleagues and have managed small and medium size teams
   content = "I have a zeal for sharing my knowledge"
   banner = "images/talks/banner.jpg"
 
+  [profile.recentPosts]
+  enable = true
+  folder="posts"
+  maxCountToShow = 3
+  title = "Recent Posts"
+  action="Read More"
+  ionIconName = "arrow-forward-outline"
+  exploreMoreAction = "Explore Other Posts"
+  postUrl= "posts"
+
 
 
 

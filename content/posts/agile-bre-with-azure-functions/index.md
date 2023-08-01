@@ -6,7 +6,7 @@ codeMaxLines: 50
 codeLineNumbers: true
 usePageBundles: true
 featureImage: "FeaturedImage.png"
-thumbnail: "Thumbnail.png"
+thumbnail: "Thumbnail.jpg"
 shareImage: "FeaturedImage.png"
 draft: false
 categories:

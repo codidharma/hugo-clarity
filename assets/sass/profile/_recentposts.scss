@@ -1,0 +1,112 @@
+#recentposts h3 {
+  padding: 0;
+  margin: 0;
+  color: var(--text-secondary-color) !important;
+}
+
+#recentposts .card-header {
+	padding: .75rem 1.25rem;
+	margin-bottom: 0;
+	background-color: var(--secondary-color) !important;
+	border-bottom: 1px solid rgba(0,0,0,.125);
+	&:first-child {
+		border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+	}
+}
+
+#recentposts .card-img-top {
+	width: 100%;
+	border-top-left-radius: calc(.25rem - 1px);
+	border-top-right-radius: calc(.25rem - 1px);
+}
+
+#recentposts .card-title {
+	margin-bottom: .75rem;
+}
+
+#recentposts .card-footer {
+	padding: .75rem 1.25rem;
+	background-color: var(--secondary-color) !important;
+	border-top: 1px solid rgba(0,0,0,.125);
+	&:last-child {
+		border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
+	}
+}#recentposts h3 {
+  color: var(--text-secondary-color) !important;
+}
+
+#recentposts .card {
+  cursor: context-menu;
+  background-color: var(--secondary-color) !important;
+  border-radius: 1rem;
+  box-shadow: 0 0 36px rgba(15, 80, 100, 0.50);
+  /* transform: translate3d(0, 0, 0); */
+  transition: box-shadow .2s linear,opacity .2s linear;
+  border: 2px solid transparent;
+}
+
+#recentposts a.card {
+  cursor: alias;
+}
+
+#recentposts .card h5 {
+  color: var(--text-color) !important;
+  opacity: 0.9;
+}
+
+#recentposts .card:hover {
+  border: 2px solid var(--text-color);
+  transition: .3s;
+}
+#recentposts .card:focus {
+  border: 2px solid var(--text-color);
+  transition: .3s;
+}
+
+#recentposts .card-text {
+  background-color: var(--secondary-color) !important;
+  color: var(--text-secondary-color) !important;
+}
+
+#recentposts .card-img-bottom {
+	width: 100%;
+	border-bottom-right-radius: calc(.25rem - 1px);
+	border-bottom-left-radius: calc(.25rem - 1px);
+}
+#recentposts .actionbutton{
+  display: inline-flex;
+	background-color: $theme;
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  color: $light;
+  font-size: 0.9rem;
+  align-items: center;
+	overflow: hidden;
+	cursor: pointer;
+  margin-top: 10px;
+  padding-right: 0;
+  padding-left: 10px;
+  padding-top: 10px;
+  border: 1px solid var(--primary-color);
+  box-shadow:0px 8px 56px rgba(15, 80, 100, 0.80);
+  border-radius: 0rem;
+  transition: none;
+}
+
+#recentposts .actionbutton:hover{
+  background: rgba(15, 80, 100, 0.50)
+}
+
+#recentposts .actionbutton:active{
+  background-color: rgba(15, 80, 100, 0.80)
+}
+
+#recentposts .actionbutton-icon{
+  width: 30px;
+}
+
+#recentposts .pt-3 {
+	padding-top: 1rem !important;
+}
+
+

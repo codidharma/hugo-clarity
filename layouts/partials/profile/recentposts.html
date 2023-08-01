@@ -1,0 +1,59 @@
+
+{{- $rp := .Site.Params.profile.recentPosts}}
+{{ if $rp.enable | default false }}
+{{ $recentPostsPath := $rp.folder | default "posts" }}
+{{ $recentPostsCount := $rp.maxCountToShow | default 3 }}
+{{ $recentPosts := where .Site.RegularPages "Section" $recentPostsPath | first $recentPostsCount }}
+<section id="recentposts" class="py-5">
+  <div class="container py-3">
+    <h3 class="text-center bg-transparent">{{$rp.title}}</h3>
+    <div class="px-0 px-md-5 px-lg-5">
+      <div class="row justify-content-center">
+        {{ range $recentPosts }}
+        <div class="col-lg-4 col-md-6 pt-2">
+          <div class="card h-100">
+            <div class="card-header">
+              <a href="{{.Permalink}}" class="card-title">
+                  {{with .Resources.GetMatch (.Params.thumbnail)}}
+                  <img src="{{.Permalink}}" class="card-img-top">
+                  {{end}}
+              </a>
+            </div>
+            <div class="card-body bg-transparent p-3">
+              <a href="{{ .RelPermalink }}" class="primary-font card-title">
+                <h5 class="card-title bg-transparent" title="{{ .Title }}">{{ .Title | truncate 60 }}</h5>
+              </a>
+              <div class="card-text">
+                <p>{{.Summary | truncate 150}}</p>
+              </div>
+            </div>
+            <div class="mt-auto card-footer">
+              <div class="text-center">
+                <button type="button" class="actionbutton"
+                onclick="window.open('{{.Permalink}}', '_blank')">
+                <span class="actionbutton-text">{{$rp.action}}</span>
+                <span class="actionbutton-icon">
+                  <ion-icon name="{{$rp.ionIconName}}"></ion-icon>
+                </span>
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        {{end}}
+      </div>
+    </div>
+    <div class="text-center mt-auto pt-3">
+      <button type="button" class="actionbutton"
+                onclick="window.open('{{ relURL $rp.postUrl}}', '_blank')">
+                <span class="actionbutton-text">{{$rp.exploreMoreAction}}</span>
+                <span class="actionbutton-icon">
+                  <ion-icon name="{{$rp.ionIconName}}"></ion-icon>
+                </span>
+              </button>
+    </div>
+  </div>
+
+</section>
+{{end}}
