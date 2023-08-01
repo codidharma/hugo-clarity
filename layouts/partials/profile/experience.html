@@ -9,11 +9,21 @@
       <div class="col-12 p-0 mb-4">
         <div class="card">
           <div class="card-body">
+            {{- if .companyUrl}}
+            <a href="{{absURL .companyUrl}}">
+              <u><h5 class="card-title"><b>{{ .company }}</b></h5></u>
+            </a>
+            {{else}}
             <h5 class="card-title"><b>{{ .company }}</b></h5>
+            {{end}}
+
             <div class="float-end">
               <small>{{ .date }}</small>
             </div>
             <h5 class="card-title">{{ .job }}</h5>
+            <div >
+              <small>{{ .location }}</small>
+            </div>
             <div class="py-1 experience-content">
               <p><b>Roles and Responsibilities:</b></p>
               {{ .content | markdownify}}

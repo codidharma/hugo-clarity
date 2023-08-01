@@ -220,23 +220,63 @@ I also enjoy mentoring colleagues and have managed small and medium size teams
   index = false
 
   [[profile.experience.items]]
-    job = "Senior Software Developer"
-    company = "Facebook"
-    companyUrl = "https://example.com"
-    date = "Jan 2022 - present"
-    content = "I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. I am currently working on a project that will be used to help people find the best way to get around the city."
+    job = "Business Architecture Manager"
+    company = "Accenture India"
+    companyUrl = "https://www.accenture.com/"
+    date = "Jan 2021 - Present"
+    location = "Pune, India"
+    content = """
+  - Work as a cloud solution architect who focuses on building scalable serverless applications for Insurance and Banking verticals.
+  - Responsible for designing insurance specific CRM and Low code Systems.
+  - My tech stack mainly involves C#, .Net Core, Azure and Power Platform.
+  - Responsible for management of two two pizza teams and report to senior Accenture leadership in India."""
+
+  [[profile.experience.items]]
+    job = "Technical Consultant"
+    company = "Chamonix IT Solutions"
+    companyUrl = "https://chamonix.com.au/"
+    date = "Dec 2019 - Dec 2020"
+    location = "Adelaide, Australia"
+    content = """
+  - Worked as a consultant. This was an individual contributor role.
+  - Was responsibility of designing and building cloud applications and advising government and private sector clients on adoption of cloud technologies.
+  - Used C#, Microsoft Azure, WSO2(integration analysis only) for daily work"""
+
+  [[profile.experience.items]]
+    job = "Delivery Module Lead"
+    company = "Mphasis Australia Pty Ltd "
+    companyUrl = "https://www.mphasis.com/"
+    date = "Nov 2016 - Nov 2019"
+    location = "Adelaide, Australia"
+    content = """
+  - Worked as a senior software engineer in a client facing role in banking vertical.
+  - Was responsible for building Enterprise Level Systems Integrations using Microsoft BizTalk server.
+  - In later stages, was responsible for designing integrations systems which communicated with modern and legacy systems.
+  - Tech stack of choice was Microsoft BizTalk Server and C#."""
 
 
 [[profile.experience.items]]
     job = "Software Developer"
-    company = "Amazon"
-    companyUrl = "https://example.com"
-    date = "Sep 2020 - Dec 2021"
+    company = "Syntel-Atos"
+    companyUrl = "https://atos.net/"
+    date = "May 2016 - Nov 2016"
+    location = "Pune, India"
     content = """
+  - Worked as a Integration System Administrator in healthcare vertical.
+  - Was responsible for maintenance of the client BizTalk server systems.
+  - Typically used Microsoft BizTalk Server and PowerShell for my daily tasks. """
 
-- Lead backend developer for a product.
-- Created a frontend design for a product.
-"""
+[[profile.experience.items]]
+    job = "Junior Software Developer"
+    company = "Tata Consultancy Services"
+    companyUrl = "https://www.tcs.com/"
+    date = "Dec 2012 - May 2016"
+    location = "Mumbai, India"
+    content = """
+- Worked as a junior developer for a insurance client.
+- Was responsible for building and maintaining systems integrations.
+- Used Microsoft BizTalk Server and PowerShell for daily tasks."""
+
 
 [profile.education]
   enable = true
