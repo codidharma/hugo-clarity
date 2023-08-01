@@ -1,10 +1,10 @@
 [[main]]
   name = "Home"
-  url = ""
+  url = "profile"
   weight = -110
 
 [[main]]
-  name = "Standalone Posts"
+  name = "Blog"
   url = "posts"
   weight = -109
 
